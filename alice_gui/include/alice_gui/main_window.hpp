@@ -58,7 +58,7 @@ public:
 	double foot_step_foot_z_swap;
 	double foot_step_body_z_swap;
 	double foot_step_y_zmp_conv;
-
+	int setting_comboBox_index;
 	void closeEvent(QCloseEvent *event);
 	void showNoMasterMessage();
 	public Q_SLOTS:

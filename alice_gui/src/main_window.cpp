@@ -644,6 +644,7 @@ void MainWindow::on_update_button_clicked()
 }
 void MainWindow::on_setting_comboBox_currentIndexChanged(int index)
 {
+
 	if(index == 0)
 	{
 		ui.edit_step_num->setText("");
@@ -655,6 +656,7 @@ void MainWindow::on_setting_comboBox_currentIndexChanged(int index)
 		ui.edit_foot_z_swap->setText("");
 		ui.edit_body_z_swap->setText("");
 		ui.edit_y_zmp_conv->setText("");
+		setting_comboBox_index = 0;
 	}
 	if(index == 1)
 	{
@@ -667,6 +669,7 @@ void MainWindow::on_setting_comboBox_currentIndexChanged(int index)
 		ui.edit_foot_z_swap->setText(QString("%1").arg(foot_step_foot_z_swap));
 		ui.edit_body_z_swap->setText(QString("%1").arg(foot_step_body_z_swap));
 		ui.edit_y_zmp_conv->setText(QString("%1").arg(foot_step_y_zmp_conv));
+		setting_comboBox_index = 1;
 	}
 	if(index == 2)
 	{
@@ -679,6 +682,7 @@ void MainWindow::on_setting_comboBox_currentIndexChanged(int index)
 		ui.edit_foot_z_swap->setText(QString("%1").arg(foot_step_foot_z_swap));
 		ui.edit_body_z_swap->setText(QString("%1").arg(foot_step_body_z_swap));
 		ui.edit_y_zmp_conv->setText(QString("%1").arg(foot_step_y_zmp_conv));
+		setting_comboBox_index = 2;
 	}
 	if(index == 3)
 	{
@@ -691,6 +695,7 @@ void MainWindow::on_setting_comboBox_currentIndexChanged(int index)
 		ui.edit_foot_z_swap->setText(QString("%1").arg(foot_step_foot_z_swap));
 		ui.edit_body_z_swap->setText(QString("%1").arg(foot_step_body_z_swap));
 		ui.edit_y_zmp_conv->setText(QString("%1").arg(foot_step_y_zmp_conv));
+		setting_comboBox_index = 3;
 	}
 }
 void MainWindow::on_all_torque_on_button_clicked()
@@ -965,36 +970,29 @@ void MainWindow::on_apply_data_clicked() {
 
 	parameter_str = ui.edit_step_num->text();
 	parameter_double = parameter_str.toDouble();
-
-	// message variables store
 	foot_step_command_msg.step_num = parameter_double;
 
 	parameter_str = ui.edit_step_length->text();
 	parameter_double = parameter_str.toDouble();
-
-	// message variables store
 	foot_step_command_msg.step_length = parameter_double;
 
 	parameter_str = ui.edit_side_step_length->text();
 	parameter_double = parameter_str.toDouble();
-
-	// message variables store
 	foot_step_command_msg.side_step_length = parameter_double;
 
 	parameter_str = ui.edit_step_angle_rad->text();
 	parameter_double = parameter_str.toDouble();
-
-	// message variables store
 	foot_step_command_msg.step_angle_rad = parameter_double;
 
 	parameter_str = ui.edit_step_time->text();
 	parameter_double = parameter_str.toDouble();
-
-	// message variables store
 	foot_step_command_msg.step_time = parameter_double;
 
 	// send message
-	foot_step_command_msg.command = "stop";
+	if(setting_comboBox_index == 1)foot_step_command_msg.command = "stop";
+	else if(setting_comboBox_index == 2)foot_step_command_msg.command = "expanded stop";
+	else if(setting_comboBox_index == 3)foot_step_command_msg.command = "centered stop";
+	else foot_step_command_msg.command = "stop";
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 // foot step generater
