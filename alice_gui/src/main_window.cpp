@@ -574,7 +574,7 @@ void MainWindow::on_step_save_button_clicked()
 	YAML::Emitter out;
 	std::string path_;
 	if(ALICE_ID == 1) path_ = ros::package::getPath("alice_gui") + "/config/step_parameter1.yaml";
-	if(ALICE_ID == 2) path_ = ros::package::getPath("alice_gui") + "/config/step_parameter1.yaml";
+	if(ALICE_ID == 2) path_ = ros::package::getPath("alice_gui") + "/config/step_parameter2.yaml";
 
 	out << YAML::BeginMap;
 	out << YAML::Key << "default_step_num" << YAML::Value << ui.default_step_num->text().toDouble();
