@@ -275,11 +275,11 @@ void MainWindow::select_joint_state()
 
 void MainWindow::on_stop_button_clicked()
 {
-	dataTimer->stop();
+	//dataTimer->stop();
 }
 void MainWindow::on_start_button_clicked()
 {
-	dataTimer->start(0);
+	//dataTimer->start(0);
 }
 void MainWindow::on_joint_state_init_button_clicked()
 {

@@ -85,7 +85,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	draw_ractangle(ui.ground_graph, ground_map, "ground");
 	ground_map->topLeft->setCoords(-4.5,-3);
 	ground_map->bottomRight->setCoords(4.5,3);  //reverse !!
-
+	
 	//change_ractangle(ground, , qnode.lf_point_y);
 
 
@@ -95,10 +95,10 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	draw_ractangle(ui.zmp_graph, foot_right, "right");
 
 
-	dataTimer = new QTimer(this);
-	connect(dataTimer, SIGNAL(timeout()), this, SLOT(realtimeDataSlot()));
-	dataTimer->start(0.006); // Interval 0 means to refresh as fast as possible
-
+	//dataTimer = new QTimer(this);
+	//connect(dataTimer, SIGNAL(timeout()), this, SLOT(realtimeDataSlot()));
+	//dataTimer->start(0.006); // Interval 0 means to refresh as fast as possible
+	//dataTimer->stop();
 	/****************************
 	 ** Initialize  load joint data
 	 ****************************/
