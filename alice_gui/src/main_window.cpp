@@ -38,6 +38,9 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
         ui.setting_comboBox->addItem("setting default");
 	ui.setting_comboBox->addItem("setting expanded");
 	ui.setting_comboBox->addItem("setting centered");
+	ui.balance_duration_value->setEnabled(0);
+	ui.balance_hip_value->setEnabled(0);
+	ui.joint_updating_duration->setEnabled(0);
 	qnode.init();
 	setWindowIcon(QIcon(":/images/heroes.png"));
 	QPixmap pix(":/images/Alice.png");
@@ -339,10 +342,10 @@ void MainWindow::on_ALICE_ID_2_Button_clicked(){
 	ui.foot_step_body_z_swap->setText(QString("%1").arg(foot_step_body_z_swap));
 	ui.foot_step_y_zmp_conv->setText(QString("%1").arg(foot_step_y_zmp_conv));
 
-	ui.expanded_left->setEnabled(0);
-	ui.expanded_right->setEnabled(0);
-	ui.centered_left->setEnabled(0);
-	ui.centered_right->setEnabled(0);
+	ui.expanded_left->setEnabled(1);
+	ui.expanded_right->setEnabled(1);
+	ui.centered_left->setEnabled(1);
+	ui.centered_right->setEnabled(1);
 	qnode.alice_id_msgs.data = "2";
 	qnode.alice_id_pub.publish(qnode.alice_id_msgs);
 }
@@ -541,6 +544,16 @@ void MainWindow::on_joint_save_button_clicked()
 	std::ofstream fout(path_.c_str());
 	fout << out.c_str(); // dump it back into the file
 	on_joint_apply_button_clicked();
+	if(ALICE_ID == 1)
+	{
+		qnode.alice_id_msgs.data = "1";
+		qnode.alice_id_pub.publish(qnode.alice_id_msgs);
+	}
+	if(ALICE_ID == 2)
+	{
+		qnode.alice_id_msgs.data = "2";
+		qnode.alice_id_pub.publish(qnode.alice_id_msgs);
+	}
 }
 
 void MainWindow::on_step_apply_button_clicked()
