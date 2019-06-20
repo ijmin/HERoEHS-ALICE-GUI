@@ -7,5 +7,6 @@
         <file>images/Alice_body.png</file>
         <file>images/Alice_body2.png</file>
         <file>images/Alice_leg.png</file>
+        <file>images/GUI_icon.png</file>
     </qresource>
 </RCC>

@@ -42,7 +42,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	ui.balance_hip_value->setEnabled(0);
 	ui.joint_updating_duration->setEnabled(0);
 	qnode.init();
-	setWindowIcon(QIcon(":/images/heroes.png"));
+	setWindowIcon(QIcon(":/images/GUI_icon.png"));
 	QPixmap pix(":/images/Alice.png");
 	alice_scene.addPixmap(pix);
 	ui.alice_graphicsView->setScene(&alice_scene);
