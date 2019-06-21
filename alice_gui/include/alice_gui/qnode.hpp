@@ -47,6 +47,7 @@
 #include "geometry_msgs/Vector3.h"
 #include "std_msgs/Float64.h"
 #include "sensor_msgs/JointState.h"
+#include "diagnostic_msgs/KeyValue.h"
 /*****************************************************************************
  ** Namespaces
  *****************************************************************************/
@@ -131,6 +132,8 @@ public:
 	 ** walking test
 	 *****************************************************************************/
 	ros::Publisher foot_step_command_pub;
+	ros::Publisher pricision_foot_step_command_pub;
+	diagnostic_msgs::KeyValue pricision_command_msg;
 	ros::ServiceClient set_balance_param_client;
 	ros::ServiceClient joint_feedback_gain_client;
 

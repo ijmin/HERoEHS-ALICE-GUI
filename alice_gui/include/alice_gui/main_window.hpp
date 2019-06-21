@@ -119,7 +119,27 @@ public:
 	void on_forward_clicked();
 	void on_backward_clicked();
 
+	void on_left_kick_clicked();
+	void on_right_kick_clicked();
+
+	void on_expanded_left_clicked();
+	void on_expanded_right_clicked();
+
+	void on_centered_left_clicked();
+	void on_centered_right_clicked();
+
 	void on_stop_clicked();
+
+	void on_pricision_forward_clicked();
+	void on_pricision_backward_clicked();
+
+	void on_pricision_left_clicked();
+	void on_pricision_right_clicked();
+
+	void on_pricision_turn_left_clicked();
+	void on_pricision_turn_right_clicked();
+
+	void on_pricision_stop_clicked();
 	//parameter
 	void on_apply_data_clicked();
 	void on_joint_feedback_gain_on_clicked();
@@ -161,12 +181,6 @@ public:
 
 
 	//<------------------------------------------------------------------- foot step generator -->
-	void on_left_kick_clicked();
-	void on_right_kick_clicked();
-	void on_expanded_left_clicked();
-	void on_expanded_right_clicked();
-	void on_centered_left_clicked();
-	void on_centered_right_clicked();
 	void on_apply_foot_step_generator_clicked();
 
 

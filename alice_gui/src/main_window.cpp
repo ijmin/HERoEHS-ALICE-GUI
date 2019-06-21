@@ -1040,6 +1040,51 @@ void MainWindow::on_centered_right_clicked() {
 	foot_step_command_msg.step_time = centered_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
+void MainWindow::on_pricision_forward_clicked() {
+
+	qnode.pricision_command_msg.key = "forward_pricision";
+	qnode.pricision_command_msg.value = ui.pricision_value->text().toStdString();
+	qnode.pricision_foot_step_command_pub.publish(qnode.pricision_command_msg);
+}
+void MainWindow::on_pricision_backward_clicked() {
+
+	qnode.pricision_command_msg.key = "backward_pricision";
+	qnode.pricision_command_msg.value = ui.pricision_value->text().toStdString();
+	qnode.pricision_foot_step_command_pub.publish(qnode.pricision_command_msg);
+}
+void MainWindow::on_pricision_left_clicked() {
+
+	qnode.pricision_command_msg.key = "left_pricision";
+	qnode.pricision_command_msg.value = ui.pricision_value->text().toStdString();
+	qnode.pricision_foot_step_command_pub.publish(qnode.pricision_command_msg);
+}
+void MainWindow::on_pricision_right_clicked() {
+
+	qnode.pricision_command_msg.key = "right_pricision";
+	qnode.pricision_command_msg.value = ui.pricision_value->text().toStdString();
+	qnode.pricision_foot_step_command_pub.publish(qnode.pricision_command_msg);
+}
+void MainWindow::on_pricision_turn_left_clicked() {
+
+	qnode.pricision_command_msg.key = "turn_left_pricision";
+	qnode.pricision_command_msg.value = ui.pricision_value->text().toStdString();
+	qnode.pricision_foot_step_command_pub.publish(qnode.pricision_command_msg);
+}
+void MainWindow::on_pricision_turn_right_clicked() {
+
+	qnode.pricision_command_msg.key = "turn_right_pricision";
+	qnode.pricision_command_msg.value = ui.pricision_value->text().toStdString();
+	qnode.pricision_foot_step_command_pub.publish(qnode.pricision_command_msg);
+}
+void MainWindow::on_pricision_stop_clicked() {
+	foot_step_command_msg.command = "stop";
+	foot_step_command_msg.step_num = default_step_num;
+	foot_step_command_msg.step_length = default_step_length;
+	foot_step_command_msg.side_step_length = default_side_step_length;
+	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
+	foot_step_command_msg.step_time = default_step_time;
+	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+}
 void MainWindow::on_apply_data_clicked() {
 
 	QString parameter_str;
