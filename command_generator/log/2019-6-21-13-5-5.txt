@@ -1,0 +1,2 @@
+command|status|accept/ignore|step_time|step_num|step_length|side_step_length|step_angle_rad|logtime|
+forward||ignore|2|2|0.2|0.05|0.05|0:14:13|
