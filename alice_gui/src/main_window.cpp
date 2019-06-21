@@ -78,13 +78,13 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	graph_draw_sensor(ui.sensor_plot_2, "Right Sensor", "m", -3, 3, 10);
 	graph_draw_none_line(ui.zmp_graph, "         ZMP FZ", "m", -0.3, 0.3, -0.3, 0.3, 10);
 
-	graph_draw_none_line(ui.ground_graph, "         MAP", "m", -5, 5, -5, 5, 10);
+	graph_draw_none_line(ui.ground_graph, "         MAP", "m", -8, 8, -5.5, 5.5, 10);
 	ui.ground_graph->xAxis->setLabel("X  m");
 	ui.ground_graph->yAxis->setLabel("Y  m");
 	ground_map = new QCPItemRect(ui.ground_graph);
 	draw_ractangle(ui.ground_graph, ground_map, "ground");
-	ground_map->topLeft->setCoords(-4.5,-3);
-	ground_map->bottomRight->setCoords(4.5,3);  //reverse !!
+	ground_map->topLeft->setCoords(-7,-4.5);
+	ground_map->bottomRight->setCoords(7,4.5);  //reverse !!
 	
 	//change_ractangle(ground, , qnode.lf_point_y);
 
@@ -95,10 +95,10 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	draw_ractangle(ui.zmp_graph, foot_right, "right");
 
 
-	//dataTimer = new QTimer(this);
-	//connect(dataTimer, SIGNAL(timeout()), this, SLOT(realtimeDataSlot()));
-	//dataTimer->start(0.006); // Interval 0 means to refresh as fast as possible
-	//dataTimer->stop();
+	dataTimer = new QTimer(this);
+	connect(dataTimer, SIGNAL(timeout()), this, SLOT(realtimeDataSlot()));
+	dataTimer->start(0.006); // Interval 0 means to refresh as fast as possible
+	dataTimer->stop();
 	/****************************
 	 ** Initialize  load joint data
 	 ****************************/
