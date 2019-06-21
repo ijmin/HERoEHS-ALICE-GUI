@@ -912,67 +912,132 @@ void MainWindow::on_y_walking_button_clicked() {
 void MainWindow::on_turn_left_clicked() {
 
 	foot_step_command_msg.command = "turn left";
+	foot_step_command_msg.step_num = default_step_num;
+	foot_step_command_msg.step_length = default_step_length;
+	foot_step_command_msg.side_step_length = default_side_step_length;
+	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
+	foot_step_command_msg.step_time = default_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 void MainWindow::on_turn_right_clicked() {
 
 	foot_step_command_msg.command = "turn right";
+	foot_step_command_msg.step_num = default_step_num;
+	foot_step_command_msg.step_length = default_step_length;
+	foot_step_command_msg.side_step_length = default_side_step_length;
+	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
+	foot_step_command_msg.step_time = default_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 void MainWindow::on_left_clicked() {
 
 	foot_step_command_msg.command = "left";
+	foot_step_command_msg.step_num = default_step_num;
+	foot_step_command_msg.step_length = default_step_length;
+	foot_step_command_msg.side_step_length = default_side_step_length;
+	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
+	foot_step_command_msg.step_time = default_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 void MainWindow::on_right_clicked() {
 	foot_step_command_msg.command = "right";
+	foot_step_command_msg.step_num = default_step_num;
+	foot_step_command_msg.step_length = default_step_length;
+	foot_step_command_msg.side_step_length = default_side_step_length;
+	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
+	foot_step_command_msg.step_time = default_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 
 void MainWindow::on_forward_clicked() {
 
 	foot_step_command_msg.command = "forward";
+	foot_step_command_msg.step_num = default_step_num;
+	foot_step_command_msg.step_length = default_step_length;
+	foot_step_command_msg.side_step_length = default_side_step_length;
+	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
+	foot_step_command_msg.step_time = default_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 void MainWindow::on_backward_clicked() {
 
 	foot_step_command_msg.command = "backward";
+	foot_step_command_msg.step_num = default_step_num;
+	foot_step_command_msg.step_length = default_step_length;
+	foot_step_command_msg.side_step_length = default_side_step_length;
+	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
+	foot_step_command_msg.step_time = default_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 void MainWindow::on_stop_clicked() {
 	foot_step_command_msg.command = "stop";
+	foot_step_command_msg.step_num = default_step_num;
+	foot_step_command_msg.step_length = default_step_length;
+	foot_step_command_msg.side_step_length = default_side_step_length;
+	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
+	foot_step_command_msg.step_time = default_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 void MainWindow::on_left_kick_clicked()
 {
 	foot_step_command_msg.command = "left kick";
+	foot_step_command_msg.step_num = default_step_num;
+	foot_step_command_msg.step_length = default_step_length;
+	foot_step_command_msg.side_step_length = default_side_step_length;
+	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
+	foot_step_command_msg.step_time = default_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 
 }
 void MainWindow::on_right_kick_clicked()
 {
 	foot_step_command_msg.command = "right kick";
+	foot_step_command_msg.step_num = default_step_num;
+	foot_step_command_msg.step_length = default_step_length;
+	foot_step_command_msg.side_step_length = default_side_step_length;
+	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
+	foot_step_command_msg.step_time = default_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 
 }
 void MainWindow::on_expanded_left_clicked() {
 
 	foot_step_command_msg.command = "expanded left";
+	foot_step_command_msg.step_num = expanded_step_num;
+	foot_step_command_msg.step_length = expanded_step_length;
+	foot_step_command_msg.side_step_length = expanded_side_step_length;
+	foot_step_command_msg.step_angle_rad = expanded_step_angle_radian;
+	foot_step_command_msg.step_time = expanded_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 void MainWindow::on_expanded_right_clicked() {
 
 	foot_step_command_msg.command = "expanded right";
+	foot_step_command_msg.step_num = expanded_step_num;
+	foot_step_command_msg.step_length = expanded_step_length;
+	foot_step_command_msg.side_step_length = expanded_side_step_length;
+	foot_step_command_msg.step_angle_rad = expanded_step_angle_radian;
+	foot_step_command_msg.step_time = expanded_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 void MainWindow::on_centered_left_clicked() {
 
 	foot_step_command_msg.command = "centered left";
+	foot_step_command_msg.step_num = centered_step_num;
+	foot_step_command_msg.step_length = centered_step_length;
+	foot_step_command_msg.side_step_length = centered_side_step_length;
+	foot_step_command_msg.step_angle_rad = centered_step_angle_radian;
+	foot_step_command_msg.step_time = centered_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 void MainWindow::on_centered_right_clicked() {
 
 	foot_step_command_msg.command = "centered right";
+	foot_step_command_msg.step_num = centered_step_num;
+	foot_step_command_msg.step_length = centered_step_length;
+	foot_step_command_msg.side_step_length = centered_side_step_length;
+	foot_step_command_msg.step_angle_rad = centered_step_angle_radian;
+	foot_step_command_msg.step_time = centered_step_time;
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 void MainWindow::on_apply_data_clicked() {
@@ -1002,9 +1067,33 @@ void MainWindow::on_apply_data_clicked() {
 	foot_step_command_msg.step_time = parameter_double;
 
 	// send message
-	if(setting_comboBox_index == 1)foot_step_command_msg.command = "default stop";
-	else if(setting_comboBox_index == 2)foot_step_command_msg.command = "expanded stop";
-	else if(setting_comboBox_index == 3)foot_step_command_msg.command = "centered stop";
+	if(setting_comboBox_index == 1)
+	{
+		foot_step_command_msg.command = "default stop";
+		default_step_num = foot_step_command_msg.step_num;
+		default_step_length = foot_step_command_msg.step_length;
+		default_side_step_length = foot_step_command_msg.side_step_length;
+		default_step_angle_radian = foot_step_command_msg.step_angle_rad;
+		default_step_time = foot_step_command_msg.step_time;
+	}
+	else if(setting_comboBox_index == 2)
+	{
+		foot_step_command_msg.command = "expanded stop";
+		expanded_step_num = foot_step_command_msg.step_num;
+		expanded_step_length = foot_step_command_msg.step_length;
+		expanded_side_step_length = foot_step_command_msg.side_step_length;
+		expanded_step_angle_radian = foot_step_command_msg.step_angle_rad;
+		expanded_step_time = foot_step_command_msg.step_time;
+	}
+	else if(setting_comboBox_index == 3)
+	{
+		foot_step_command_msg.command = "centered stop";
+		centered_step_num = foot_step_command_msg.step_num;
+		centered_step_length = foot_step_command_msg.step_length;
+		centered_side_step_length = foot_step_command_msg.side_step_length;
+		centered_step_angle_radian = foot_step_command_msg.step_angle_rad;
+		centered_step_time = foot_step_command_msg.step_time;
+	}
 	else foot_step_command_msg.command = "stop";
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
