@@ -130,16 +130,16 @@ public:
 
 	void on_stop_clicked();
 
-	void on_pricision_forward_clicked();
-	void on_pricision_backward_clicked();
+	void on_precision_forward_clicked();
+	void on_precision_backward_clicked();
 
-	void on_pricision_left_clicked();
-	void on_pricision_right_clicked();
+	void on_precision_left_clicked();
+	void on_precision_right_clicked();
 
-	void on_pricision_turn_left_clicked();
-	void on_pricision_turn_right_clicked();
+	void on_precision_turn_left_clicked();
+	void on_precision_turn_right_clicked();
 
-	void on_pricision_stop_clicked();
+	void on_precision_stop_clicked();
 	//parameter
 	void on_apply_data_clicked();
 	void on_joint_feedback_gain_on_clicked();

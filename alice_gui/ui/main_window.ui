@@ -4275,9 +4275,9 @@ p, li { white-space: pre-wrap; }
          </widget>
          <widget class="QWidget" name="tab_10">
           <attribute name="title">
-           <string>Pricision Walking test</string>
+           <string>Precision Walking test</string>
           </attribute>
-          <widget class="QPushButton" name="pricision_stop">
+          <widget class="QPushButton" name="precision_stop">
            <property name="geometry">
             <rect>
              <x>220</x>
@@ -4290,7 +4290,7 @@ p, li { white-space: pre-wrap; }
             <string>S</string>
            </property>
           </widget>
-          <widget class="QPushButton" name="pricision_right">
+          <widget class="QPushButton" name="precision_right">
            <property name="geometry">
             <rect>
              <x>320</x>
@@ -4303,7 +4303,7 @@ p, li { white-space: pre-wrap; }
             <string>R</string>
            </property>
           </widget>
-          <widget class="QPushButton" name="pricision_turn_right">
+          <widget class="QPushButton" name="precision_turn_right">
            <property name="geometry">
             <rect>
              <x>320</x>
@@ -4316,7 +4316,7 @@ p, li { white-space: pre-wrap; }
             <string>TR</string>
            </property>
           </widget>
-          <widget class="QPushButton" name="pricision_forward">
+          <widget class="QPushButton" name="precision_forward">
            <property name="geometry">
             <rect>
              <x>220</x>
@@ -4329,7 +4329,7 @@ p, li { white-space: pre-wrap; }
             <string>F</string>
            </property>
           </widget>
-          <widget class="QPushButton" name="pricision_backward">
+          <widget class="QPushButton" name="precision_backward">
            <property name="geometry">
             <rect>
              <x>220</x>
@@ -4342,7 +4342,7 @@ p, li { white-space: pre-wrap; }
             <string>B</string>
            </property>
           </widget>
-          <widget class="QPushButton" name="pricision_left">
+          <widget class="QPushButton" name="precision_left">
            <property name="geometry">
             <rect>
              <x>120</x>
@@ -4355,7 +4355,7 @@ p, li { white-space: pre-wrap; }
             <string>L</string>
            </property>
           </widget>
-          <widget class="QPushButton" name="pricision_turn_left">
+          <widget class="QPushButton" name="precision_turn_left">
            <property name="geometry">
             <rect>
              <x>120</x>
@@ -4368,7 +4368,7 @@ p, li { white-space: pre-wrap; }
             <string>TL</string>
            </property>
           </widget>
-          <widget class="QLineEdit" name="pricision_value">
+          <widget class="QLineEdit" name="precision_value">
            <property name="geometry">
             <rect>
              <x>150</x>

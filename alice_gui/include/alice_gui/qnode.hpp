@@ -132,8 +132,8 @@ public:
 	 ** walking test
 	 *****************************************************************************/
 	ros::Publisher foot_step_command_pub;
-	ros::Publisher pricision_foot_step_command_pub;
-	diagnostic_msgs::KeyValue pricision_command_msg;
+	ros::Publisher precision_foot_step_command_pub;
+	diagnostic_msgs::KeyValue precision_command_msg;
 	ros::ServiceClient set_balance_param_client;
 	ros::ServiceClient joint_feedback_gain_client;
 
