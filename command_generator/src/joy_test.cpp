@@ -88,39 +88,39 @@ void Command_generator::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
   }
   else if(joy->axes[2] == -1)
   {
-    joystic_command.key = "centered left";
+    joystic_command.key = "centered_left";
     command_switch = 2;
   }
   else if(joy->axes[5] == -1)
   {
-    joystic_command.key = "centered right";
+    joystic_command.key = "centered_right";
     command_switch = 2;
   }
   else if(joy->buttons[4] == 1)
   {
-    joystic_command.key = "turn left";
+    joystic_command.key = "turn_left";
     command_switch = 2;
   }
   else if(joy->buttons[5] == 1)
   {
-    joystic_command.key = "turn right";
+    joystic_command.key = "turn_right";
     command_switch = 2;
   }
   else if(joy->buttons[0] == 1)
   {
-    joystic_command.key = "expanded left";
+    joystic_command.key = "expanded_left";
     command_switch = 2;
   }
   else if(joy->buttons[1] == 1)
   {
-    joystic_command.key = "expanded right";
+    joystic_command.key = "expanded_right";
     command_switch = 2;
   }
   else if(joy->buttons[9] == 1)
   {
     if(joy_alice_id == 1)
     {
-      joystic_command.key = "left kick";
+      joystic_command.key = "left_kick";
       command_switch = 2;
     }
   }
@@ -128,7 +128,7 @@ void Command_generator::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
   {
     if(joy_alice_id == 1)
     {
-      joystic_command.key = "right kick";
+      joystic_command.key = "right_kick";
       command_switch = 2;
     }
   }
