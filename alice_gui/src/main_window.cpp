@@ -204,7 +204,7 @@ void MainWindow::on_ALICE_ID_1_Button_clicked(){
 	
 
 	std::string step_path_;
-	step_path_ = ros::package::getPath("alice_gui") + "/config/step_parameter1.yaml";
+	step_path_ = ros::package::getPath("alice_foot_step_planner") + "/config/step_parameter1.yaml";
 	parse_step_param_data(step_path_);
 	ui.default_step_num->setText(QString("%1").arg(default_step_num));
 	ui.default_step_length->setText(QString("%1").arg(default_step_length));
@@ -317,7 +317,7 @@ void MainWindow::on_ALICE_ID_2_Button_clicked(){
 
 
 	std::string step_path_;
-	step_path_ = ros::package::getPath("alice_gui") + "/config/step_parameter2.yaml";
+	step_path_ = ros::package::getPath("alice_foot_step_planner") + "/config/step_parameter2.yaml";
 	parse_step_param_data(step_path_);
 	ui.default_step_num->setText(QString("%1").arg(default_step_num));
 	ui.default_step_length->setText(QString("%1").arg(default_step_length));
