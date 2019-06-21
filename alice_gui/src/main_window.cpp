@@ -1002,7 +1002,7 @@ void MainWindow::on_apply_data_clicked() {
 	foot_step_command_msg.step_time = parameter_double;
 
 	// send message
-	if(setting_comboBox_index == 1)foot_step_command_msg.command = "stop";
+	if(setting_comboBox_index == 1)foot_step_command_msg.command = "default stop";
 	else if(setting_comboBox_index == 2)foot_step_command_msg.command = "expanded stop";
 	else if(setting_comboBox_index == 3)foot_step_command_msg.command = "centered stop";
 	else foot_step_command_msg.command = "stop";
