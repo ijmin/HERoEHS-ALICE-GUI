@@ -145,6 +145,24 @@ void Command_generator::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
     step_type = "expanded";
     command_switch = 2;
   }
+  else if(joy->buttons[9] == 1)
+  {
+    if(joy_alice_id == 1)
+    {
+      FootParam.command = "left kick";
+      step_type = "default";
+      command_switch = 2;
+    }
+  }
+  else if(joy->buttons[10] == 1)
+  {
+    if(joy_alice_id == 1)
+    {
+      FootParam.command = "right kick";
+      step_type = "default";
+      command_switch = 2;
+    }
+  }
   else if(joy->buttons[2] == 1)
   {
     FootParam.command = "stop";
