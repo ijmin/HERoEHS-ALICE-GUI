@@ -165,13 +165,13 @@ void MainWindow::graph_draw_none_line(QCustomPlot *ui_graph, const QString title
 	ui_graph->plotLayout()->addElement(0, 0, new QCPTextElement(ui_graph, title, QFont("sans", 12, QFont::Bold)));
 
 	ui_graph->addGraph();
-	ui_graph->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,7));
-	ui_graph->graph(0)->setPen(QPen(QColor(40, 110, 255)));
+	ui_graph->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,10));
+	ui_graph->graph(0)->setPen(QPen(QColor(255, 255, 255)));
 	ui_graph->graph(0)->setLineStyle(QCPGraph::lsNone);
-	ui_graph->graph(0)->setName("Current_cop_Fz");
+	ui_graph->graph(0)->setName("Center");
 
 	ui_graph->addGraph();
-	ui_graph->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,7));
+	ui_graph->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,20));
 	ui_graph->graph(1)->setPen(QPen(QColor(255, 0, 0)));
 	ui_graph->graph(1)->setLineStyle(QCPGraph::lsNone);
 	ui_graph->graph(1)->setName("Reference_cop_Fz");
