@@ -37,7 +37,7 @@ void MainWindow::realtimeDataSlot()
 	{
 		graph_draw_update_none_line(ui.zmp_graph, qnode.current_zmp_fz_x, qnode.current_zmp_fz_y,0,0);
 		//graph_draw_update_none_line(ui.ground_graph, qnode.current_robot_y, qnode.current_robot_x, qnode.current_robot_y + sin(qnode.current_robot_theta), qnode.current_robot_x + cos(qnode.current_robot_theta));
-		graph_draw_update_map(ui.ground_graph, 0, 0, qnode.current_robot_y, qnode.current_robot_x);
+		graph_draw_update_map(ui.ground_graph, 0, 0, qnode.current_robot_x, qnode.current_robot_y);
 
 		check_sensor_menu();
 		select_joint_state();

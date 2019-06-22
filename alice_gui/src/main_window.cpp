@@ -78,13 +78,13 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	graph_draw_sensor(ui.sensor_plot_2, "Right Sensor", "m", -3, 3, 10);
 	graph_draw_none_line(ui.zmp_graph, "         ZMP FZ", "m", -0.3, 0.3, -0.3, 0.3, 10);
 
-	graph_draw_map(ui.ground_graph, "         MAP", "m", -8, 8, -5.5, 5.5, 10);
-	ui.ground_graph->xAxis->setLabel("X  m");
-	ui.ground_graph->yAxis->setLabel("Y  m");
+	graph_draw_map(ui.ground_graph, "         MAP", "m", -5.5, 5.5, -4, 4, 10);
+	ui.ground_graph->xAxis->setLabel("Y  m");
+	ui.ground_graph->yAxis->setLabel("X  m");
 	ground_map = new QCPItemRect(ui.ground_graph);
 	draw_ractangle(ui.ground_graph, ground_map, "ground");
-	ground_map->topLeft->setCoords(-7,-4.5);
-	ground_map->bottomRight->setCoords(7,4.5);  //reverse !!
+	ground_map->topLeft->setCoords(-4.5,-3);
+	ground_map->bottomRight->setCoords(4.5,3);  //reverse !!
 	
 	//change_ractangle(ground, , qnode.lf_point_y);
 
