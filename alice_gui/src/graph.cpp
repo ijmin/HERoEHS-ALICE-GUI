@@ -36,8 +36,8 @@ void MainWindow::realtimeDataSlot()
 	if (key-lastPointKey > 0.006) //
 	{
 		graph_draw_update_none_line(ui.zmp_graph, qnode.current_zmp_fz_x, qnode.current_zmp_fz_y,0,0);
-		graph_draw_update_none_line(ui.ground_graph, qnode.current_robot_y, qnode.current_robot_x, qnode.current_robot_y + sin(qnode.current_robot_theta), qnode.current_robot_x + cos(qnode.current_robot_theta));
-		//graph_draw_update_none_line(ui.ground_graph, 3, 3, 0, 0);
+		//graph_draw_update_none_line(ui.ground_graph, qnode.current_robot_y, qnode.current_robot_x, qnode.current_robot_y + sin(qnode.current_robot_theta), qnode.current_robot_x + cos(qnode.current_robot_theta));
+		graph_draw_update_map(ui.ground_graph, 0, 0, qnode.current_robot_y, qnode.current_robot_x);
 
 		check_sensor_menu();
 		select_joint_state();
@@ -165,14 +165,14 @@ void MainWindow::graph_draw_none_line(QCustomPlot *ui_graph, const QString title
 	ui_graph->plotLayout()->addElement(0, 0, new QCPTextElement(ui_graph, title, QFont("sans", 12, QFont::Bold)));
 
 	ui_graph->addGraph();
-	ui_graph->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,10));
-	ui_graph->graph(0)->setPen(QPen(QColor(255, 255, 255)));
+	ui_graph->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,7));
+	ui_graph->graph(0)->setPen(QPen(QColor(255, 0, 0)));
 	ui_graph->graph(0)->setLineStyle(QCPGraph::lsNone);
 	ui_graph->graph(0)->setName("Center");
 
 	ui_graph->addGraph();
-	ui_graph->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,20));
-	ui_graph->graph(1)->setPen(QPen(QColor(255, 0, 0)));
+	ui_graph->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,7));
+	ui_graph->graph(1)->setPen(QPen(QColor(40, 110, 255)));
 	ui_graph->graph(1)->setLineStyle(QCPGraph::lsNone);
 	ui_graph->graph(1)->setName("Reference_cop_Fz");
 
@@ -186,6 +186,67 @@ void MainWindow::graph_draw_none_line(QCustomPlot *ui_graph, const QString title
 	ui_graph->yAxis->setRange(min_value_y, max_value_y);
 }
 void MainWindow::graph_draw_update_none_line(QCustomPlot *ui_graph, double cur_value1, double cur_value2, double ref_value1, double ref_value2)
+{
+	QVector<double> c_1, c_2, r_11, r_22;
+
+	c_1.append(cur_value1);
+	c_2.append(cur_value2);
+
+	r_11.append(ref_value1);
+	r_22.append(ref_value2);
+
+
+	ui_graph->graph(0)->setData(c_2, c_1);
+	ui_graph->replot();
+	ui_graph->update();
+
+	ui_graph->graph(1)->setData(r_22, r_11);
+	ui_graph->replot();
+	ui_graph->update();
+
+
+
+	c_1.clear();
+	c_2.clear();
+	r_11.clear();
+	r_22.clear();
+
+}
+void MainWindow::graph_draw_map(QCustomPlot *ui_graph, const QString title, const QString unit, double min_value_x, double max_value_x, double min_value_y, double max_value_y, int tick_count)
+{
+	ui_graph->setLocale(QLocale(QLocale::English, QLocale::UnitedKingdom)); // period as decimal separator and comma as thousand separator
+	ui_graph->legend->setVisible(false);
+	legendFont.setPointSize(9); // and make a bit smaller for legend
+	ui_graph->legend->setFont(legendFont);
+	ui_graph->legend->setBrush(QBrush(QColor(255,255,255,230)));
+	// by default, the legend is in the inset layout of the main axis rect. So this is how we access it to change legend placement:
+	ui_graph->axisRect()->insetLayout()->setInsetAlignment(0, Qt::AlignTop|Qt::AlignRight);
+
+	ui_graph->plotLayout()->insertRow(0);
+	ui_graph->plotLayout()->addElement(0, 0, new QCPTextElement(ui_graph, title, QFont("sans", 12, QFont::Bold)));
+
+	ui_graph->addGraph();
+	ui_graph->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, Qt::white, Qt::transparent, 150));
+	ui_graph->graph(0)->setPen(QPen(QColor(255, 255, 255)));
+	ui_graph->graph(0)->setLineStyle(QCPGraph::lsNone);
+	ui_graph->graph(0)->setName("Center");
+
+	ui_graph->addGraph();
+	ui_graph->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,20));
+	ui_graph->graph(1)->setPen(QPen(QColor(255, 0, 0)));
+	ui_graph->graph(1)->setLineStyle(QCPGraph::lsNone);
+	ui_graph->graph(1)->setName("Current_Robot_Pose");
+
+
+	ui_graph->xAxis->setLabel("Y  "+unit);
+	ui_graph->yAxis->setLabel("X  "+unit);
+
+	ui_graph->axisRect()->setupFullAxesBox();
+	ui_graph->xAxis->setRange(min_value_x, max_value_x);
+	ui_graph->xAxis->setRangeReversed(false);
+	ui_graph->yAxis->setRange(min_value_y, max_value_y);
+}
+void MainWindow::graph_draw_update_map(QCustomPlot *ui_graph, double cur_value1, double cur_value2, double ref_value1, double ref_value2)
 {
 	QVector<double> c_1, c_2, r_11, r_22;
 
