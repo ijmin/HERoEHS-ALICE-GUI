@@ -118,19 +118,13 @@ void Command_generator::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
   }
   else if(joy->buttons[9] == 1)
   {
-    if(joy_alice_id == 1)
-    {
-      joystic_command.key = "left_kick";
-      command_switch = 2;
-    }
+    joystic_command.key = "left_kick";
+    command_switch = 2;
   }
   else if(joy->buttons[10] == 1)
   {
-    if(joy_alice_id == 1)
-    {
-      joystic_command.key = "right_kick";
-      command_switch = 2;
-    }
+    joystic_command.key = "right_kick";
+    command_switch = 2;
   }
   else if(joy->buttons[2] == 1)
   {
