@@ -233,31 +233,31 @@ void MainWindow::graph_draw_map(QCustomPlot *ui_graph, const QString title, cons
 	ui_graph->graph(0)->setName("Center");
 
 	ui_graph->addGraph();
-	ui_graph->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,10));
+	ui_graph->graph(1)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,35));
 	ui_graph->graph(1)->setPen(QPen(QColor(255, 0, 0)));
 	ui_graph->graph(1)->setLineStyle(QCPGraph::lsNone);
 	ui_graph->graph(1)->setName("Center_Robot_Pose");
 
     ui_graph->addGraph();
-    ui_graph->graph(2)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,10));
-    ui_graph->graph(2)->setPen(QPen(QColor(0, 255, 0)));
+    ui_graph->graph(2)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,35));
+    ui_graph->graph(2)->setPen(QPen(QColor(0, 0, 0)));
     ui_graph->graph(2)->setLineStyle(QCPGraph::lsNone);
     ui_graph->graph(2)->setName("Goal1_Robot_Pose");
 
     ui_graph->addGraph();
-    ui_graph->graph(3)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,10));
+    ui_graph->graph(3)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,35));
     ui_graph->graph(3)->setPen(QPen(QColor(0, 0, 255)));
     ui_graph->graph(3)->setLineStyle(QCPGraph::lsNone);
     ui_graph->graph(3)->setName("Goal2_Robot_Pose");
 
     ui_graph->addGraph();
-    ui_graph->graph(4)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,10));
+    ui_graph->graph(4)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,35));
     ui_graph->graph(4)->setPen(QPen(QColor(255, 255, 0)));
     ui_graph->graph(4)->setLineStyle(QCPGraph::lsNone);
     ui_graph->graph(4)->setName("Fusion_Robot_Pose");
 
     ui_graph->addGraph();
-    ui_graph->graph(5)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,10));
+    ui_graph->graph(5)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,35));
     ui_graph->graph(5)->setPen(QPen(QColor(255, 0, 255)));
     ui_graph->graph(5)->setLineStyle(QCPGraph::lsNone);
     ui_graph->graph(5)->setName("Kinematic_Robot_Pose");
