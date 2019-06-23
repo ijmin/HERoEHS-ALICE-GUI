@@ -65,8 +65,10 @@ QNode::QNode(int argc, char** argv ) :
 
 	q_center_robot_x = 0;
 	q_center_robot_y = 0;
-	q_goal_robot_x = 0;
-	q_goal_robot_y = 0;
+	q_goal1_robot_x = 0;
+	q_goal1_robot_y = 0;
+	q_goal2_robot_x = 0;
+	q_goal2_robot_y = 0;
 	q_fusion_robot_x = 0;
 	q_fusion_robot_y = 0;
 	q_kinematic_robot_x = 0;
@@ -311,10 +313,15 @@ void QNode::robotPoseMsgCallback(const alice_msgs::FoundObjectArray::ConstPtr& m
 			q_center_robot_x = msg->data[i].pos.x;
 			q_center_robot_y = msg->data[i].pos.y;
 		}
-		else if(msg->data[i].name == "goal")
+		else if(msg->data[i].name == "goal1")
 		{
-			q_goal_robot_x = msg->data[i].pos.x;
-			q_goal_robot_y = msg->data[i].pos.y;
+			q_goal1_robot_x = msg->data[i].pos.x;
+			q_goal1_robot_y = msg->data[i].pos.y;
+		}
+		else if(msg->data[i].name == "goal2")
+		{
+			q_goal2_robot_x = msg->data[i].pos.x;
+			q_goal2_robot_y = msg->data[i].pos.y;
 		}
 		else if(msg->data[i].name == "fusion")
 		{

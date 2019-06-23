@@ -182,7 +182,8 @@ public:
 
 	double current_robot_x, current_robot_y, current_robot_theta;
 	double q_center_robot_x, q_center_robot_y;
-	double q_goal_robot_x, q_goal_robot_y;
+	double q_goal1_robot_x, q_goal1_robot_y;
+	double q_goal2_robot_x, q_goal2_robot_y;
 	double q_fusion_robot_x, q_fusion_robot_y;
 	double q_kinematic_robot_x, q_kinematic_robot_y;
 

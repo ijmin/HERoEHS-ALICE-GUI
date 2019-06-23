@@ -37,8 +37,8 @@ void MainWindow::realtimeDataSlot()
 	{
 		graph_draw_update_none_line(ui.zmp_graph, qnode.current_zmp_fz_x, qnode.current_zmp_fz_y,0,0);
 		//graph_draw_update_none_line(ui.ground_graph, qnode.current_robot_y, qnode.current_robot_x, qnode.current_robot_y + sin(qnode.current_robot_theta), qnode.current_robot_x + cos(qnode.current_robot_theta));
-		graph_draw_update_map(ui.ground_graph, qnode.q_center_robot_x, qnode.q_center_robot_y, qnode.q_goal_robot_x, qnode.q_goal_robot_y,
-				qnode.q_fusion_robot_x,qnode.q_fusion_robot_y,qnode.q_kinematic_robot_x,qnode.q_kinematic_robot_y);
+		graph_draw_update_map(ui.ground_graph, qnode.q_center_robot_x, qnode.q_center_robot_y, qnode.q_goal1_robot_x, qnode.q_goal1_robot_y, qnode.q_goal2_robot_x, qnode.q_goal2_robot_y,
+				qnode.q_fusion_robot_x,qnode.q_fusion_robot_y, qnode.q_kinematic_robot_x,qnode.q_kinematic_robot_y);
 
 		check_sensor_menu();
 		select_joint_state();
@@ -240,21 +240,27 @@ void MainWindow::graph_draw_map(QCustomPlot *ui_graph, const QString title, cons
 
     ui_graph->addGraph();
     ui_graph->graph(2)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,10));
-    ui_graph->graph(2)->setPen(QPen(QColor(255, 255, 0)));
+    ui_graph->graph(2)->setPen(QPen(QColor(0, 255, 0)));
     ui_graph->graph(2)->setLineStyle(QCPGraph::lsNone);
-    ui_graph->graph(2)->setName("Goal_Robot_Pose");
+    ui_graph->graph(2)->setName("Goal1_Robot_Pose");
 
     ui_graph->addGraph();
     ui_graph->graph(3)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,10));
     ui_graph->graph(3)->setPen(QPen(QColor(0, 0, 255)));
     ui_graph->graph(3)->setLineStyle(QCPGraph::lsNone);
-    ui_graph->graph(3)->setName("Fusion_Robot_Pose");
+    ui_graph->graph(3)->setName("Goal2_Robot_Pose");
 
     ui_graph->addGraph();
     ui_graph->graph(4)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,10));
-    ui_graph->graph(4)->setPen(QPen(QColor(255, 0, 255)));
+    ui_graph->graph(4)->setPen(QPen(QColor(255, 255, 0)));
     ui_graph->graph(4)->setLineStyle(QCPGraph::lsNone);
-    ui_graph->graph(4)->setName("Kinematic_Robot_Pose");
+    ui_graph->graph(4)->setName("Fusion_Robot_Pose");
+
+    ui_graph->addGraph();
+    ui_graph->graph(5)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc,10));
+    ui_graph->graph(5)->setPen(QPen(QColor(255, 0, 255)));
+    ui_graph->graph(5)->setLineStyle(QCPGraph::lsNone);
+    ui_graph->graph(5)->setName("Kinematic_Robot_Pose");
 
 
 	ui_graph->xAxis->setLabel("Y  "+unit);
@@ -262,16 +268,18 @@ void MainWindow::graph_draw_map(QCustomPlot *ui_graph, const QString title, cons
 
 	ui_graph->axisRect()->setupFullAxesBox();
 	ui_graph->xAxis->setRange(min_value_x, max_value_x);
-	ui_graph->xAxis->setRangeReversed(false);
+	ui_graph->xAxis->setRangeReversed(true);
 	ui_graph->yAxis->setRange(min_value_y, max_value_y);
+	ui_graph->yAxis->setRangeReversed(false);
 }
 void MainWindow::graph_draw_update_map(QCustomPlot *ui_graph, double center_robot_x, double center_robot_y,
-double goal_robot_x, double goal_robot_y, double fusion_robot_x, double fusion_robot_y, double kinematic_robot_x, double kinematic_robot_y)
+double goal1_robot_x, double goal1_robot_y, double goal2_robot_x, double goal2_robot_y, double fusion_robot_x, double fusion_robot_y, double kinematic_robot_x, double kinematic_robot_y)
 {
 	QVector<double>
 	center_1, center_2,
 	center_robot_1, center_robot_2,
-	goal_robot_1, goal_robot_2,
+	goal1_robot_1, goal1_robot_2,
+	goal2_robot_1, goal2_robot_2,
 	fusion_robot_1, fusion_robot_2,
 	kinematic_robot_1, kinematic_robot_2;
 
@@ -279,8 +287,10 @@ double goal_robot_x, double goal_robot_y, double fusion_robot_x, double fusion_r
 	center_2.append(0);
 	center_robot_1.append(center_robot_x);
 	center_robot_2.append(center_robot_y);
-    goal_robot_1.append(goal_robot_x);
-    goal_robot_2.append(goal_robot_y);
+    goal1_robot_1.append(goal1_robot_x);
+    goal1_robot_2.append(goal1_robot_y);
+    goal2_robot_1.append(goal2_robot_x);
+    goal2_robot_2.append(goal2_robot_y);
     fusion_robot_1.append(fusion_robot_x);
     fusion_robot_2.append(fusion_robot_y);
     kinematic_robot_1.append(kinematic_robot_x);
@@ -292,13 +302,16 @@ double goal_robot_x, double goal_robot_y, double fusion_robot_x, double fusion_r
 	ui_graph->graph(1)->setData(center_robot_2, center_robot_1);
 	ui_graph->replot();
 	ui_graph->update();
-    ui_graph->graph(2)->setData(goal_robot_2, goal_robot_1);
+    ui_graph->graph(2)->setData(goal1_robot_2, goal1_robot_1);
     ui_graph->replot();
     ui_graph->update();
-    ui_graph->graph(3)->setData(fusion_robot_2, fusion_robot_1);
+    ui_graph->graph(3)->setData(goal2_robot_2, goal2_robot_1);
     ui_graph->replot();
     ui_graph->update();
-    ui_graph->graph(4)->setData(kinematic_robot_2, kinematic_robot_1);
+    ui_graph->graph(4)->setData(fusion_robot_2, fusion_robot_1);
+    ui_graph->replot();
+    ui_graph->update();
+    ui_graph->graph(5)->setData(kinematic_robot_2, kinematic_robot_1);
     ui_graph->replot();
     ui_graph->update();
 
@@ -308,8 +321,10 @@ double goal_robot_x, double goal_robot_y, double fusion_robot_x, double fusion_r
 	center_2.clear();
 	center_robot_1.clear();
 	center_robot_2.clear();
-    goal_robot_1.clear();
-    goal_robot_2.clear();
+    goal1_robot_1.clear();
+    goal1_robot_2.clear();
+    goal2_robot_1.clear();
+    goal2_robot_2.clear();
     fusion_robot_1.clear();
     fusion_robot_2.clear();
     kinematic_robot_1.clear();
