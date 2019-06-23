@@ -263,12 +263,12 @@ void MainWindow::graph_draw_map(QCustomPlot *ui_graph, const QString title, cons
     ui_graph->graph(5)->setName("Kinematic_Robot_Pose");
 
 
-	ui_graph->xAxis->setLabel("Y  "+unit);
-	ui_graph->yAxis->setLabel("X  "+unit);
+	ui_graph->xAxis->setLabel("X  "+unit);
+	ui_graph->yAxis->setLabel("Y  "+unit);
 
 	ui_graph->axisRect()->setupFullAxesBox();
 	ui_graph->xAxis->setRange(min_value_x, max_value_x);
-	ui_graph->xAxis->setRangeReversed(true);
+	ui_graph->xAxis->setRangeReversed(false);
 	ui_graph->yAxis->setRange(min_value_y, max_value_y);
 	ui_graph->yAxis->setRangeReversed(false);
 }
@@ -285,16 +285,16 @@ double goal1_robot_x, double goal1_robot_y, double goal2_robot_x, double goal2_r
 
 	center_1.append(0);
 	center_2.append(0);
-	center_robot_1.append(center_robot_x);
-	center_robot_2.append(center_robot_y);
-    goal1_robot_1.append(goal1_robot_x);
-    goal1_robot_2.append(goal1_robot_y);
-    goal2_robot_1.append(goal2_robot_x);
-    goal2_robot_2.append(goal2_robot_y);
-    fusion_robot_1.append(fusion_robot_x);
-    fusion_robot_2.append(fusion_robot_y);
-    kinematic_robot_1.append(kinematic_robot_x);
-    kinematic_robot_2.append(kinematic_robot_y);
+	center_robot_1.append(center_robot_y);
+	center_robot_2.append(center_robot_x);
+    goal1_robot_1.append(goal1_robot_y);
+    goal1_robot_2.append(goal1_robot_x);
+    goal2_robot_1.append(goal2_robot_y);
+    goal2_robot_2.append(goal2_robot_x);
+    fusion_robot_1.append(fusion_robot_y);
+    fusion_robot_2.append(fusion_robot_x);
+    kinematic_robot_1.append(kinematic_robot_y);
+    kinematic_robot_2.append(kinematic_robot_x);
 
 	ui_graph->graph(0)->setData(center_2, center_1);
 	ui_graph->replot();
