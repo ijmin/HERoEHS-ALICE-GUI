@@ -205,7 +205,7 @@ int main(int argc, char** argv)
 
   while(ros::ok())
   {
-    if(count > 1000*command_controller.Command_Period)
+    /*if(count > 1000*command_controller.Command_Period)
     {
       if(command_controller.command_switch > 0)
       {
@@ -213,7 +213,8 @@ int main(int argc, char** argv)
       }
       count = 0;
     }
-    else count += 1;
+    else count += 1;*/
+    command_controller.vel_pub_.publish(command_controller.joystic_command);
     usleep(1000);
     ros::spinOnce();
   }
