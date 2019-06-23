@@ -37,6 +37,7 @@
 #include "alice_foot_step_generator/FootStepCommand.h"
 #include "alice_msgs/ForceTorque.h"
 #include "alice_msgs/BalanceParam.h"
+#include "alice_msgs/FoundObjectArray.h"
 #include "alice_walking_module_msgs/SetBalanceParam.h"
 #include "alice_walking_module_msgs/SetJointFeedBackGain.h"
 
@@ -177,8 +178,13 @@ public:
 	ros::Subscriber r_leg_point_xyz_sub;
 
 	ros::Subscriber robot_state_sub;
+	ros::Subscriber robot_pose_sub;
 
 	double current_robot_x, current_robot_y, current_robot_theta;
+	double q_center_robot_x, q_center_robot_y;
+	double q_goal_robot_x, q_goal_robot_y;
+	double q_fusion_robot_x, q_fusion_robot_y;
+	double q_kinematic_robot_x, q_kinematic_robot_y;
 
 
 
@@ -217,6 +223,7 @@ private:
 	void lLegPointXYZMsgCallback(const geometry_msgs::Vector3::ConstPtr& msg);
 	void rLegPointXYZMsgCallback(const geometry_msgs::Vector3::ConstPtr& msg);
 	void robotStateMsgCallback(const geometry_msgs::Vector3::ConstPtr& msg);
+	void robotPoseMsgCallback(const alice_msgs::FoundObjectArray::ConstPtr& msg);
 };
 
 }  // namespace offset_tuner_operation

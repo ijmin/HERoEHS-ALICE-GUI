@@ -106,6 +106,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
 	init_pose_path = ros::package::getPath("alice_gui") + "/config/joint_data.yaml";// 로스 패키지에서 YAML파일의 경로를 읽어온다.
 	joint_data_parse(init_pose_path);
 	ui.id_line_edit->setText("0");
+	Speed = "2";
 	pose_num = 0;
 	foot_zmpFz_p_gain = 0;
 	foot_zmpFz_d_gain = 0;
@@ -494,7 +495,6 @@ void MainWindow::on_joint_apply_button_clicked()
 	joint_feedback_gain_msg.request.feedback_gain.l_leg_an_r_p_gain = ui.joint_l_leg_an_r_p_gain->text().toDouble();
 	joint_feedback_gain_msg.request.feedback_gain.l_leg_an_r_d_gain = ui.joint_l_leg_an_r_d_gain->text().toDouble();
 }
-
 void MainWindow::on_joint_save_button_clicked()
 {
 	YAML::Emitter out;
@@ -581,7 +581,6 @@ void MainWindow::on_step_apply_button_clicked()
 	foot_step_body_z_swap = ui.foot_step_body_z_swap->text().toDouble();
 	foot_step_y_zmp_conv = ui.foot_step_y_zmp_conv->text().toDouble();
 }
-
 void MainWindow::on_step_save_button_clicked()
 {
 	YAML::Emitter out;
@@ -909,136 +908,84 @@ void MainWindow::on_y_walking_button_clicked() {
 	qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 //walking module button
+void MainWindow::on_Speed_Slow_clicked()
+{
+	Speed = "1";
+}
+void MainWindow::on_Speed_Normal_clicked()
+{
+	Speed = "2";
+}
+void MainWindow::on_Speed_Fast_clicked()
+{
+	Speed = "3";
+}
 void MainWindow::on_turn_left_clicked() {
-
-	foot_step_command_msg.command = "turn left";
-	foot_step_command_msg.step_num = default_step_num;
-	foot_step_command_msg.step_length = default_step_length;
-	foot_step_command_msg.side_step_length = default_side_step_length;
-	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
-	foot_step_command_msg.step_time = default_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "turn_left";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_turn_right_clicked() {
-
-	foot_step_command_msg.command = "turn right";
-	foot_step_command_msg.step_num = default_step_num;
-	foot_step_command_msg.step_length = default_step_length;
-	foot_step_command_msg.side_step_length = default_side_step_length;
-	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
-	foot_step_command_msg.step_time = default_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "turn_right";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_left_clicked() {
-
-	foot_step_command_msg.command = "left";
-	foot_step_command_msg.step_num = default_step_num;
-	foot_step_command_msg.step_length = default_step_length;
-	foot_step_command_msg.side_step_length = default_side_step_length;
-	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
-	foot_step_command_msg.step_time = default_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "left";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_right_clicked() {
-	foot_step_command_msg.command = "right";
-	foot_step_command_msg.step_num = default_step_num;
-	foot_step_command_msg.step_length = default_step_length;
-	foot_step_command_msg.side_step_length = default_side_step_length;
-	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
-	foot_step_command_msg.step_time = default_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "right";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
-
 void MainWindow::on_forward_clicked() {
-
-	foot_step_command_msg.command = "forward";
-	foot_step_command_msg.step_num = default_step_num;
-	foot_step_command_msg.step_length = default_step_length;
-	foot_step_command_msg.side_step_length = default_side_step_length;
-	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
-	foot_step_command_msg.step_time = default_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "forward";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_backward_clicked() {
-
-	foot_step_command_msg.command = "backward";
-	foot_step_command_msg.step_num = default_step_num;
-	foot_step_command_msg.step_length = default_step_length;
-	foot_step_command_msg.side_step_length = default_side_step_length;
-	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
-	foot_step_command_msg.step_time = default_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "backward";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_stop_clicked() {
-	foot_step_command_msg.command = "stop";
-	foot_step_command_msg.step_num = default_step_num;
-	foot_step_command_msg.step_length = default_step_length;
-	foot_step_command_msg.side_step_length = default_side_step_length;
-	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
-	foot_step_command_msg.step_time = default_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "stop";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_left_kick_clicked()
 {
-	foot_step_command_msg.command = "left kick";
-	foot_step_command_msg.step_num = default_step_num;
-	foot_step_command_msg.step_length = default_step_length;
-	foot_step_command_msg.side_step_length = default_side_step_length;
-	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
-	foot_step_command_msg.step_time = default_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
-
+	qnode.precision_command_msg.key = "left_kick";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_right_kick_clicked()
 {
-	foot_step_command_msg.command = "right kick";
-	foot_step_command_msg.step_num = default_step_num;
-	foot_step_command_msg.step_length = default_step_length;
-	foot_step_command_msg.side_step_length = default_side_step_length;
-	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
-	foot_step_command_msg.step_time = default_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
-
+	qnode.precision_command_msg.key = "right_kick";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_expanded_left_clicked() {
-
-	foot_step_command_msg.command = "expanded left";
-	foot_step_command_msg.step_num = expanded_step_num;
-	foot_step_command_msg.step_length = expanded_step_length;
-	foot_step_command_msg.side_step_length = expanded_side_step_length;
-	foot_step_command_msg.step_angle_rad = expanded_step_angle_radian;
-	foot_step_command_msg.step_time = expanded_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "expanded_left";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_expanded_right_clicked() {
-
-	foot_step_command_msg.command = "expanded right";
-	foot_step_command_msg.step_num = expanded_step_num;
-	foot_step_command_msg.step_length = expanded_step_length;
-	foot_step_command_msg.side_step_length = expanded_side_step_length;
-	foot_step_command_msg.step_angle_rad = expanded_step_angle_radian;
-	foot_step_command_msg.step_time = expanded_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "exapanded_right";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_centered_left_clicked() {
-
-	foot_step_command_msg.command = "centered left";
-	foot_step_command_msg.step_num = centered_step_num;
-	foot_step_command_msg.step_length = centered_step_length;
-	foot_step_command_msg.side_step_length = centered_side_step_length;
-	foot_step_command_msg.step_angle_rad = centered_step_angle_radian;
-	foot_step_command_msg.step_time = centered_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "centered_left";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_centered_right_clicked() {
-
-	foot_step_command_msg.command = "centered right";
-	foot_step_command_msg.step_num = centered_step_num;
-	foot_step_command_msg.step_length = centered_step_length;
-	foot_step_command_msg.side_step_length = centered_side_step_length;
-	foot_step_command_msg.step_angle_rad = centered_step_angle_radian;
-	foot_step_command_msg.step_time = centered_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "centered_right";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_precision_forward_clicked() {
 
@@ -1077,13 +1024,9 @@ void MainWindow::on_precision_turn_right_clicked() {
 	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_precision_stop_clicked() {
-	foot_step_command_msg.command = "stop";
-	foot_step_command_msg.step_num = default_step_num;
-	foot_step_command_msg.step_length = default_step_length;
-	foot_step_command_msg.side_step_length = default_side_step_length;
-	foot_step_command_msg.step_angle_rad = default_step_angle_radian;
-	foot_step_command_msg.step_time = default_step_time;
-	qnode.foot_step_command_pub.publish(foot_step_command_msg);
+	qnode.precision_command_msg.key = "stop";
+	qnode.precision_command_msg.value = Speed;
+	qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_apply_data_clicked() {
 
@@ -1399,19 +1342,11 @@ void MainWindow::parse_gain_data()
 }
 void MainWindow::on_joint_feedback_gain_on_clicked()
 {
-/*	std::string path_;
-	if(ALICE_ID == 1) path_ = ros::package::getPath("alice_gui") + "/config/joint_feedback_gain1_on.yaml";// 로스 패키지에서 YAML파일의 경로를 읽어온다.
-	if(ALICE_ID == 2) path_ = ros::package::getPath("alice_gui") + "/config/joint_feedback_gain2_on.yaml";
-	parse_joint_feed_back_param_data(path_);*/
 	qnode.joint_feedback_gain_client.call(joint_feedback_gain_msg);
 	qnode.joint_feedback_gain_client_save.call(joint_feedback_gain_msg);
 }
 void MainWindow::on_joint_feedback_gain_off_clicked()
 {
-	std::string path_;
-	if(ALICE_ID == 1) path_ = ros::package::getPath("alice_gui") + "/config/joint_feedback_gain1_off.yaml";// 로스 패키지에서 YAML파일의 경로를 읽어온다.
-	if(ALICE_ID == 2) path_ = ros::package::getPath("alice_gui") + "/config/joint_feedback_gain2_off.yaml";	
-	parse_joint_feed_back_param_data(path_);
 	qnode.joint_feedback_gain_client.call(joint_feedback_gain_msg);
 }
 void MainWindow::on_balance_param_on_clicked()
@@ -1421,10 +1356,6 @@ void MainWindow::on_balance_param_on_clicked()
 }
 void MainWindow::on_balance_param_off_clicked()
 {
-	std::string path_;
-	if(ALICE_ID == 1) path_ = ros::package::getPath("alice_gui") + "/config/balance_param1_off.yaml";// 로스 패키지에서 YAML파일의 경로를 읽어온다.
-	if(ALICE_ID == 2) path_ = ros::package::getPath("alice_gui") + "/config/balance_param2_off.yaml";
-	parse_balance_param_data(path_);
 	qnode.set_balance_param_client.call(set_balance_param_msg);
 }
 void MainWindow::parse_gain_tracking_data()

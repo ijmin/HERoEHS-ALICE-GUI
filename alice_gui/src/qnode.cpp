@@ -62,6 +62,15 @@ QNode::QNode(int argc, char** argv ) :
 	current_robot_x = 0;
 	current_robot_y = 0;
 	current_robot_theta = 0;
+
+	q_center_robot_x = 0;
+	q_center_robot_y = 0;
+	q_goal_robot_x = 0;
+	q_goal_robot_y = 0;
+	q_fusion_robot_x = 0;
+	q_fusion_robot_y = 0;
+	q_kinematic_robot_x = 0;
+	q_kinematic_robot_y = 0;
 }
 
 QNode::~QNode() {
@@ -106,7 +115,7 @@ bool QNode::init() {
 	/*****************************************************************************
 	 ** walking test
 	 *****************************************************************************/
-	foot_step_command_pub = n.advertise<alice_foot_step_generator::FootStepCommand>("/heroehs/alice_foot_step_generator/walking_command",10);
+	foot_step_command_pub = n.advertise<alice_foot_step_generator::FootStepCommand>("/heroehs/gui/step_save",10);
 	module_on_off = n.advertise<std_msgs::String>("/robotis/enable_ctrl_module", 10);
 
 	precision_foot_step_command_pub = n.advertise<diagnostic_msgs::KeyValue>("/heroehs/move_command", 10);
@@ -154,6 +163,7 @@ bool QNode::init() {
 	joint_present_state_sub     = n.subscribe("/robotis/present_joint_states", 10, &QNode::presentJointStateMsgCallback, this);
 
 	robot_state_sub = n.subscribe("/heroehs/alice/robot_state", 10, &QNode::robotStateMsgCallback, this);
+	robot_pose_sub = n.subscribe("/heroehs/alice/robot_pose", 10, &QNode::robotPoseMsgCallback, this);
 
 	//base module //
 	init_pose_pub = n.advertise<std_msgs::String>("/init_pose",10);
@@ -289,8 +299,34 @@ void QNode::robotStateMsgCallback(const geometry_msgs::Vector3::ConstPtr& msg)
 	current_robot_x = msg->x;
 	current_robot_y = msg->y;
 	current_robot_theta = msg->z;
-
 }
-
+void QNode::robotPoseMsgCallback(const alice_msgs::FoundObjectArray::ConstPtr& msg)
+{
+	int msg_length = msg->data.size();
+	int i;
+	for ( i = 0; i < msg_length ; i++)
+	{
+		if(msg->data[i].name == "center")
+		{
+			q_center_robot_x = msg->data[i].pos.x;
+			q_center_robot_y = msg->data[i].pos.y;
+		}
+		else if(msg->data[i].name == "goal")
+		{
+			q_goal_robot_x = msg->data[i].pos.x;
+			q_goal_robot_y = msg->data[i].pos.y;
+		}
+		else if(msg->data[i].name == "fusion")
+		{
+			q_fusion_robot_x = msg->data[i].pos.x;
+			q_fusion_robot_y = msg->data[i].pos.y;
+		}
+		else if(msg->data[i].name == "kinematic")
+		{
+			q_kinematic_robot_x = msg->data[i].pos.x;
+			q_kinematic_robot_y = msg->data[i].pos.y;
+		}
+	}
+}
 
 }  // namespace offset_tuner_operation

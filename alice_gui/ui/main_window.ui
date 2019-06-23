@@ -72,7 +72,7 @@
         <enum>QTabWidget::Rounded</enum>
        </property>
        <property name="currentIndex">
-        <number>4</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="tab">
         <attribute name="title">
@@ -4271,6 +4271,79 @@ p, li { white-space: pre-wrap; }
              <string>Y-Walking</string>
             </property>
            </widget>
+          </widget>
+          <widget class="QWidget" name="horizontalLayoutWidget">
+           <property name="geometry">
+            <rect>
+             <x>100</x>
+             <y>280</y>
+             <width>341</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <widget class="QGroupBox" name="ALICE_ID_GROUP_2">
+              <property name="title">
+               <string>                              Speed Controller</string>
+              </property>
+              <widget class="QRadioButton" name="Speed_Slow">
+               <property name="geometry">
+                <rect>
+                 <x>10</x>
+                 <y>30</y>
+                 <width>110</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <property name="acceptDrops">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Slow</string>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+              <widget class="QRadioButton" name="Speed_Normal">
+               <property name="geometry">
+                <rect>
+                 <x>110</x>
+                 <y>30</y>
+                 <width>110</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Normal</string>
+               </property>
+               <property name="checked">
+                <bool>true</bool>
+               </property>
+              </widget>
+              <widget class="QRadioButton" name="Speed_Fast">
+               <property name="geometry">
+                <rect>
+                 <x>220</x>
+                 <y>30</y>
+                 <width>110</width>
+                 <height>22</height>
+                </rect>
+               </property>
+               <property name="text">
+                <string>Fast</string>
+               </property>
+               <property name="checked">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </widget>
          <widget class="QWidget" name="tab_10">

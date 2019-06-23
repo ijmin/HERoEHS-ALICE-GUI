@@ -12,5 +12,5 @@
   <param name="scale_linear" value="2" type="double"/>
   <param name="scale_angular" value="2" type="double"/>
   <node pkg="command_generator" type="joy_test" name="teleop" output="screen"/>
-  <node pkg="alice_gui" type="alice_gui" name="gui"/>
+  <node pkg="alice_gui" type="alice_gui" name="gui" output="screen"/>
 </launch>
