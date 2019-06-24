@@ -124,6 +124,8 @@ include_directories(
 # )
 
 add_executable(joy_test src/joy_test.cpp)
+
+add_dependencies(joy_test ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(joy_test ${yaml_cpp_LIBRARIES} ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the library
