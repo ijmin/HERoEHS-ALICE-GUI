@@ -989,7 +989,7 @@ void MainWindow::on_expanded_left_clicked() {
   qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
 void MainWindow::on_expanded_right_clicked() {
-  qnode.precision_command_msg.key = "exapanded_right";
+  qnode.precision_command_msg.key = "expanded_right";
   qnode.precision_command_msg.value = Speed;
   qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
