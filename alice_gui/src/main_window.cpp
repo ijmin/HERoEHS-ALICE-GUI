@@ -79,8 +79,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   graph_draw_none_line(ui.zmp_graph, "         ZMP FZ", "m", -0.3, 0.3, -0.3, 0.3, 10);
 
   graph_draw_map(ui.ground_graph, "         MAP", "m", -5.5, 5.5, -4, 4, 10);
-  ui.ground_graph->xAxis->setLabel("Y  m");
-  ui.ground_graph->yAxis->setLabel("X  m");
+  ui.ground_graph->xAxis->setLabel("X  m");
+  ui.ground_graph->yAxis->setLabel("Y  m");
   ground_map = new QCPItemRect(ui.ground_graph);
   draw_ractangle(ui.ground_graph, ground_map, "ground");
   ground_map->topLeft->setCoords(-4.5,-3);
@@ -1273,7 +1273,6 @@ void MainWindow::on_tracking_on_clicked()
   parse_gain_tracking_data();
   qnode.ball_tracking_pub.publish(tracking_param_msg);
   tracking_param_msg.data.clear();
-
 }
 void MainWindow::on_tracking_off_clicked()
 {
@@ -1395,8 +1394,13 @@ void MainWindow::on_balance_param_off_clicked()
 }
 void MainWindow::parse_gain_tracking_data()
 {
+
+
   YAML::Node doc; // YAML file class 선언!
-  std::string path_ = ros::package::getPath("alice_gui") + "/config/ball_tracking_gain.yaml";// 로스 패키지에서 YAML파일의 경로를 읽어온다.
+  std::string path_;
+  if(ALICE_ID == 1) path_ = ros::package::getPath("alice_gui") + "/config/ball_tracking_gain1.yaml";
+  if(ALICE_ID == 2) path_ = ros::package::getPath("alice_gui") + "/config/ball_tracking_gain2.yaml";
+
   try
   {
     // load yaml
