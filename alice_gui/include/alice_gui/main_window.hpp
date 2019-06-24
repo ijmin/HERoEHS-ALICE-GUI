@@ -147,6 +147,9 @@ public:
 	void on_precision_turn_left_clicked();
 	void on_precision_turn_right_clicked();
 
+	void on_precision_centered_left_clicked();
+	void on_precision_centered_right_clicked();
+
 	void on_precision_stop_clicked();
 	//parameter
 	void on_apply_data_clicked();

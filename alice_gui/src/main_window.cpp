@@ -1039,6 +1039,18 @@ void MainWindow::on_precision_turn_right_clicked() {
   qnode.precision_command_msg.value = ui.precision_value->text().toStdString();
   qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
+void MainWindow::on_precision_centered_left_clicked() {
+
+  qnode.precision_command_msg.key = "centered_left_precision";
+  qnode.precision_command_msg.value = ui.precision_value->text().toStdString();
+  qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
+}
+void MainWindow::on_precision_centered_right_clicked() {
+
+  qnode.precision_command_msg.key = "centered_right_precision";
+  qnode.precision_command_msg.value = ui.precision_value->text().toStdString();
+  qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
+}
 void MainWindow::on_precision_stop_clicked() {
   qnode.precision_command_msg.key = "stop";
   qnode.precision_command_msg.value = Speed;
