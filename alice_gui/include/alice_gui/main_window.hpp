@@ -267,6 +267,7 @@ public:
 	QCPItemRect* foot_left;
 	QCPItemRect* foot_right;
 	QCPItemRect* ground_map;
+	QCPItemText* robot_pose_info;
 	QCPItemText* center_direction;
 	QCPItemText* goal1_direction;
 	QCPItemText* goal2_direction;
