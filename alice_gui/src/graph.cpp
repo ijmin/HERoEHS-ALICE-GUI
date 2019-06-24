@@ -284,6 +284,7 @@ double center_robot_z, double goal1_robot_z, double goal2_robot_z, double fusion
 
 	center_1.append(0);
 	center_2.append(0);
+
 	center_robot_1.append(center_robot_y);
 	center_robot_2.append(center_robot_x);
     goal1_robot_1.append(goal1_robot_y);
@@ -294,38 +295,39 @@ double center_robot_z, double goal1_robot_z, double goal2_robot_z, double fusion
     fusion_robot_2.append(fusion_robot_x);
     kinematic_robot_1.append(kinematic_robot_y);
     kinematic_robot_2.append(kinematic_robot_x);
-
-	center_direction->position->setCoords(center_robot_x, center_robot_y);
-	center_direction->setRotation(center_robot_z);
-	goal1_direction->position->setCoords(goal1_robot_x, goal1_robot_y);
-	goal1_direction->setRotation(goal1_robot_z);
-	goal2_direction->position->setCoords(goal2_robot_x, goal2_robot_y);
-	goal2_direction->setRotation(goal2_robot_z);
-	fusion_direction->position->setCoords(fusion_robot_x, fusion_robot_y);
-	fusion_direction->setRotation(fusion_robot_z);
-	kinematic_direction->position->setCoords(kinematic_robot_x, kinematic_robot_y);
-	kinematic_direction->setRotation(fusion_robot_z);
-
 	ui_graph->graph(0)->setData(center_2, center_1);
 	ui_graph->replot();
 	ui_graph->update();
+
+	center_direction->position->setCoords(center_robot_x, center_robot_y);
+	center_direction->setRotation(center_robot_z);
 	ui_graph->graph(1)->setData(center_robot_2, center_robot_1);
 	ui_graph->replot();
 	ui_graph->update();
+
+	goal1_direction->position->setCoords(goal1_robot_x, goal1_robot_y);
+	goal1_direction->setRotation(goal1_robot_z);
     ui_graph->graph(2)->setData(goal1_robot_2, goal1_robot_1);
     ui_graph->replot();
     ui_graph->update();
+
+	goal2_direction->position->setCoords(goal2_robot_x, goal2_robot_y);
+	goal2_direction->setRotation(goal2_robot_z);
     ui_graph->graph(3)->setData(goal2_robot_2, goal2_robot_1);
     ui_graph->replot();
     ui_graph->update();
+
+	fusion_direction->position->setCoords(fusion_robot_x, fusion_robot_y);
+	fusion_direction->setRotation(fusion_robot_z);
     ui_graph->graph(4)->setData(fusion_robot_2, fusion_robot_1);
     ui_graph->replot();
     ui_graph->update();
+
+	kinematic_direction->position->setCoords(kinematic_robot_x, kinematic_robot_y);
+	kinematic_direction->setRotation(fusion_robot_z);
     ui_graph->graph(5)->setData(kinematic_robot_2, kinematic_robot_1);
     ui_graph->replot();
     ui_graph->update();
-
-
 
 	center_1.clear();
 	center_2.clear();
