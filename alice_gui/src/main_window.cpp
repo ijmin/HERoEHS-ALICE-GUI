@@ -85,6 +85,11 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   draw_ractangle(ui.ground_graph, ground_map, "ground");
   ground_map->topLeft->setCoords(-4.5,-3);
   ground_map->bottomRight->setCoords(4.5,3);
+  robot_pose_info = new QCPItemText(ui.ground_graph);
+  robot_pose_info->setText(" center : red\n goal1 : gray\n goal2 : blue\n fusion : yellow\n kinematic : magenta");
+  robot_pose_info->position->setCoords(4.7, 3.5);
+  robot_pose_info->setTextAlignment(Qt::AlignLeft);
+  robot_pose_info->setFont(QFont(font().family(), 12));
   center_direction = new QCPItemText(ui.ground_graph);
   center_direction->setText("^");
   center_direction->setFont(QFont(font().family(), 30));
