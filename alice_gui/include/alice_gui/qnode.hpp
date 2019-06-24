@@ -181,11 +181,11 @@ public:
 	ros::Subscriber robot_pose_sub;
 
 	double current_robot_x, current_robot_y, current_robot_theta;
-	double q_center_robot_x, q_center_robot_y;
-	double q_goal1_robot_x, q_goal1_robot_y;
-	double q_goal2_robot_x, q_goal2_robot_y;
-	double q_fusion_robot_x, q_fusion_robot_y;
-	double q_kinematic_robot_x, q_kinematic_robot_y;
+	double q_center_robot_x, q_center_robot_y, q_center_robot_z;
+	double q_goal1_robot_x, q_goal1_robot_y, q_goal1_robot_z;
+	double q_goal2_robot_x, q_goal2_robot_y, q_goal2_robot_z;
+	double q_fusion_robot_x, q_fusion_robot_y, q_fusion_robot_z;
+	double q_kinematic_robot_x, q_kinematic_robot_y, q_kinematic_robot_z;
 
 
 

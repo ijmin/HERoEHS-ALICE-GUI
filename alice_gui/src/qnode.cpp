@@ -312,26 +312,31 @@ void QNode::robotPoseMsgCallback(const alice_msgs::FoundObjectArray::ConstPtr& m
 		{
 			q_center_robot_x = msg->data[i].pos.x;
 			q_center_robot_y = msg->data[i].pos.y;
+			q_center_robot_z = msg->data[i].pos.z;
 		}
 		else if(msg->data[i].name == "goal1")
 		{
 			q_goal1_robot_x = msg->data[i].pos.x;
 			q_goal1_robot_y = msg->data[i].pos.y;
+			q_goal1_robot_z = msg->data[i].pos.z;
 		}
 		else if(msg->data[i].name == "goal2")
 		{
 			q_goal2_robot_x = msg->data[i].pos.x;
 			q_goal2_robot_y = msg->data[i].pos.y;
+			q_goal2_robot_z = msg->data[i].pos.z;
 		}
 		else if(msg->data[i].name == "fusion")
 		{
 			q_fusion_robot_x = msg->data[i].pos.x;
 			q_fusion_robot_y = msg->data[i].pos.y;
+			q_fusion_robot_z = msg->data[i].pos.z;
 		}
 		else if(msg->data[i].name == "kinematic")
 		{
 			q_kinematic_robot_x = msg->data[i].pos.x;
 			q_kinematic_robot_y = msg->data[i].pos.y;
+			q_kinematic_robot_z = msg->data[i].pos.z;
 		}
 	}
 }

@@ -84,7 +84,23 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   ground_map = new QCPItemRect(ui.ground_graph);
   draw_ractangle(ui.ground_graph, ground_map, "ground");
   ground_map->topLeft->setCoords(-4.5,-3);
-  ground_map->bottomRight->setCoords(4.5,3);  //reverse !!
+  ground_map->bottomRight->setCoords(4.5,3);
+  center_direction = new QCPItemText(ui.ground_graph);
+  center_direction->setText("^");
+  center_direction->setFont(QFont(font().family(), 30));
+  goal1_direction = new QCPItemText(ui.ground_graph);
+  goal1_direction->setText("^");
+  goal1_direction->setFont(QFont(font().family(), 30));
+  goal2_direction = new QCPItemText(ui.ground_graph);
+  goal2_direction->setText("^");
+  goal2_direction->setFont(QFont(font().family(), 30));
+  fusion_direction = new QCPItemText(ui.ground_graph);
+  fusion_direction->setText("^");
+  fusion_direction->setFont(QFont(font().family(), 30));
+  kinematic_direction = new QCPItemText(ui.ground_graph);
+  kinematic_direction->setText("^");
+  kinematic_direction->setFont(QFont(font().family(), 30));
+  //reverse !!
 
   //change_ractangle(ground, , qnode.lf_point_y);
 

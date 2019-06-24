@@ -69,7 +69,8 @@ public:
 	void graph_draw_update_none_line(QCustomPlot *ui_graph, double cur_value1, double cur_value2, double ref_value1, double ref_value2);
 	void graph_draw_map(QCustomPlot *ui_graph, const QString title, const QString unit, double min_value_x, double max_value_x, double min_value_y, double max_value_y, int tick_count);
 	void graph_draw_update_map(QCustomPlot *ui_graph, double center_robot_x, double center_robot_y,
-	double goal1_robot_x, double goal1_robot_y, double goal2_robot_x, double goal2_robot_y, double fusion_robot_x, double fusion_robot_y, double kinematic_robot_x, double kinematic_robot_y);
+	double goal1_robot_x, double goal1_robot_y, double goal2_robot_x, double goal2_robot_y, double fusion_robot_x, double fusion_robot_y, double kinematic_robot_x, double kinematic_robot_y,
+	double center_robot_z, double goal1_robot_z, double goal2_robot_z, double fusion_robot_z, double kinematic_robot_z);
 	void graph_draw(QCustomPlot *ui_graph, const QString title, const QString unit, int min_value, int max_value, int tick_count);
 	void graph_draw_update(QCustomPlot *ui_graph, double valueX, double valueY, double valueZ);
 	void graph_draw_sensor(QCustomPlot *ui_graph, const QString title, const QString unit, int min_value, int max_value, int tick_count);
@@ -263,6 +264,11 @@ public:
 	QCPItemRect* foot_left;
 	QCPItemRect* foot_right;
 	QCPItemRect* ground_map;
+	QCPItemText* center_direction;
+	QCPItemText* goal1_direction;
+	QCPItemText* goal2_direction;
+	QCPItemText* fusion_direction;
+	QCPItemText* kinematic_direction;
 
 	//<------------------------------------------------------------------- param -->
 	void parse_balance_param_data(std::string path);
