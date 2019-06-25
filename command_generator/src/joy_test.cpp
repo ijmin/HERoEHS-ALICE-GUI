@@ -66,96 +66,118 @@ Command_generator::Command_generator():
 
 void Command_generator::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
-  if(joy->axes[6] == 1)
+  if(joy->buttons[3] == 0)
   {
-    joystic_command.key = "left";
-    command_switch = 2;
+	  if(joy->axes[6] == 1)
+	  {
+	    joystic_command.key = "left";
+	    command_switch = 2;
+	  }
+	  else if(joy->axes[6] == -1)
+	  {
+	    joystic_command.key = "right";
+	    command_switch = 2;
+	  }
+	  else if(joy->axes[7] == 1)
+	  {
+	    joystic_command.key = "forward";
+	    command_switch = 2;
+	  }
+	  else if(joy->axes[7] == -1)
+	  {
+	    joystic_command.key = "backward";
+	    command_switch = 2;
+	  }
+	  else if(joy->axes[2] == -1)
+	  {
+	    joystic_command.key = "centered_left";
+	    command_switch = 2;
+	  }
+	  else if(joy->axes[5] == -1)
+	  {
+	    joystic_command.key = "centered_right";
+	    command_switch = 2;
+	  }
+	  else if(joy->buttons[4] == 1)
+	  {
+	    joystic_command.key = "turn_left";
+	    command_switch = 2;
+	  }
+	  else if(joy->buttons[5] == 1)
+	  {
+	    joystic_command.key = "turn_right";
+	    command_switch = 2;
+	  }
+	  else if(joy->buttons[0] == 1)
+	  {
+	    joystic_command.key = "expanded_left";
+	    command_switch = 2;
+	  }
+	  else if(joy->buttons[1] == 1)
+	  {
+	    joystic_command.key = "expanded_right";
+	    command_switch = 2;
+	  }
+	  else if(joy->buttons[9] == 1)
+	  {
+	    joystic_command.key = "left_kick";
+	    command_switch = 2;
+	  }
+	  else if(joy->buttons[10] == 1)
+	  {
+	    joystic_command.key = "right_kick";
+	    command_switch = 2;
+	  }
+	  else if(joy->buttons[2] == 1)
+	  {
+	    joystic_command.key = "stop";
+	    command_switch = 2;
+	  }
+	  else if(joy->buttons[6] == 1)
+	  {
+	    joystic_command.value = "1";
+	  }
+	  else if(joy->buttons[7] == 1)
+	  {
+	    joystic_command.value = "3";
+	  }
+	  else if(joy->buttons[8] == 1)
+	  {
+	    joystic_command.value = "2";
+	  }
+	  else
+	  {
+	    if(command_switch == 2)
+	    {
+	      joystic_command.key = "stop";
+	      command_switch = 0;
+	    }
+	    else if(command_switch == 1)
+	    {
+	      joystic_command.key = "stop";
+	    }
+	    else if(command_switch == 0)command_switch = 0;
+	  }
   }
-  else if(joy->axes[6] == -1)
+  else if(joy->buttons[3] == 1)
   {
-    joystic_command.key = "right";
-    command_switch = 2;
+	  if(joy->buttons[9] == 1)
+	  {
+	    joystic_command.key = "y_type_left_kick";
+	    command_switch = 2;
+	  }
+	  else if(joy->buttons[10] == 1)
+	  {
+	    joystic_command.key = "y_typeright_kick";
+	    command_switch = 2;
+	  }
+	  else
+	  {
+	    joystic_command.key = "stop";
+	    command_switch = 2;
+	  }
   }
-  else if(joy->axes[7] == 1)
-  {
-    joystic_command.key = "forward";
-    command_switch = 2;
-  }
-  else if(joy->axes[7] == -1)
-  {
-    joystic_command.key = "backward";
-    command_switch = 2;
-  }
-  else if(joy->axes[2] == -1)
-  {
-    joystic_command.key = "centered_left";
-    command_switch = 2;
-  }
-  else if(joy->axes[5] == -1)
-  {
-    joystic_command.key = "centered_right";
-    command_switch = 2;
-  }
-  else if(joy->buttons[4] == 1)
-  {
-    joystic_command.key = "turn_left";
-    command_switch = 2;
-  }
-  else if(joy->buttons[5] == 1)
-  {
-    joystic_command.key = "turn_right";
-    command_switch = 2;
-  }
-  else if(joy->buttons[0] == 1)
-  {
-    joystic_command.key = "expanded_left";
-    command_switch = 2;
-  }
-  else if(joy->buttons[1] == 1)
-  {
-    joystic_command.key = "expanded_right";
-    command_switch = 2;
-  }
-  else if(joy->buttons[9] == 1)
-  {
-    joystic_command.key = "left_kick";
-    command_switch = 2;
-  }
-  else if(joy->buttons[10] == 1)
-  {
-    joystic_command.key = "right_kick";
-    command_switch = 2;
-  }
-  else if(joy->buttons[2] == 1)
-  {
-    joystic_command.key = "stop";
-    command_switch = 2;
-  }
-  else if(joy->buttons[6] == 1)
-  {
-    joystic_command.value = "1";
-  }
-  else if(joy->buttons[7] == 1)
-  {
-    joystic_command.value = "3";
-  }
-  else if(joy->buttons[8] == 1)
-  {
-    joystic_command.value = "2";
-  }
-  else
-  {
-    if(command_switch == 2)
-    {
-      joystic_command.key = "stop";
-      command_switch = 0;
-    }
-    else if(command_switch == 1)
-    {
-      joystic_command.key = "stop";
-    }
-    else if(command_switch == 0)command_switch = 0;
-  }
+
 }
 
 void Command_generator::alice_id_Callback(const std_msgs::String::ConstPtr& alice_id)
