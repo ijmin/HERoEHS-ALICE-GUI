@@ -324,7 +324,7 @@ double center_robot_z, double goal1_robot_z, double goal2_robot_z, double fusion
     ui_graph->update();
 
 	kinematic_direction->position->setCoords(kinematic_robot_x, kinematic_robot_y);
-	kinematic_direction->setRotation(fusion_robot_z);
+	kinematic_direction->setRotation(kinematic_robot_z);
     ui_graph->graph(5)->setData(kinematic_robot_2, kinematic_robot_1);
     ui_graph->replot();
     ui_graph->update();
