@@ -130,6 +130,9 @@ public:
 	void on_left_kick_clicked();
 	void on_right_kick_clicked();
 
+	void on_y_left_kick_clicked();
+	void on_y_right_kick_clicked();
+
 	void on_expanded_left_clicked();
 	void on_expanded_right_clicked();
 

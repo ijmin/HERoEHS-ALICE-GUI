@@ -4182,7 +4182,7 @@ p, li { white-space: pre-wrap; }
            <property name="geometry">
             <rect>
              <x>20</x>
-             <y>210</y>
+             <y>140</y>
              <width>91</width>
              <height>61</height>
             </rect>
@@ -4195,7 +4195,7 @@ p, li { white-space: pre-wrap; }
            <property name="geometry">
             <rect>
              <x>420</x>
-             <y>210</y>
+             <y>140</y>
              <width>91</width>
              <height>61</height>
             </rect>
@@ -4344,6 +4344,32 @@ p, li { white-space: pre-wrap; }
              </widget>
             </item>
            </layout>
+          </widget>
+          <widget class="QPushButton" name="y_left_kick">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>210</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Y-Left Kick</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="y_right_kick">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>210</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>Y-Right Kick</string>
+           </property>
           </widget>
          </widget>
          <widget class="QWidget" name="tab_10">

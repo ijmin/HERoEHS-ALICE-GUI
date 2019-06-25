@@ -988,6 +988,18 @@ void MainWindow::on_right_kick_clicked()
   qnode.precision_command_msg.value = Speed;
   qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
+void MainWindow::on_y_left_kick_clicked()
+{
+  qnode.precision_command_msg.key = "y_type_left_kick";
+  qnode.precision_command_msg.value = Speed;
+  qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
+}
+void MainWindow::on_y_right_kick_clicked()
+{
+  qnode.precision_command_msg.key = "y_type_right_kick";
+  qnode.precision_command_msg.value = Speed;
+  qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
+}
 void MainWindow::on_expanded_left_clicked() {
   qnode.precision_command_msg.key = "expanded_left";
   qnode.precision_command_msg.value = Speed;
