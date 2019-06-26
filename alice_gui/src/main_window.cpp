@@ -41,6 +41,15 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   ui.balance_duration_value->setEnabled(0);
   ui.balance_hip_value->setEnabled(0);
   ui.joint_updating_duration->setEnabled(0);
+
+  ui.initial_pose_real_button->setEnabled(0);
+  ui.base_module_real_button->setEnabled(0);
+  ui.initialize_ft_sensor_button->setEnabled(0);
+  ui.none->setEnabled(0);
+  ui.upper_body_module_button->setEnabled(0);
+  ui.online_walking_module->setEnabled(0);
+  ui.apply_foot_step_generator->setEnabled(0);
+
   qnode.init();
   setWindowIcon(QIcon(":/images/GUI_icon.png"));
   QPixmap pix(":/images/Alice.png");
@@ -148,6 +157,7 @@ void MainWindow::showNoMasterMessage() {
 
 void MainWindow::on_ALICE_ID_1_Button_clicked(){
   ALICE_ID = 1;
+  ui.initial_pose_real_button->setEnabled(1);
   std::string balance_path_;
   balance_path_ = ros::package::getPath("alice_gui") + "/config/balance_param1_on.yaml";
   parse_balance_param_data(balance_path_);
@@ -261,6 +271,7 @@ void MainWindow::on_ALICE_ID_1_Button_clicked(){
 }
 void MainWindow::on_ALICE_ID_2_Button_clicked(){
   ALICE_ID = 2;
+  ui.initial_pose_real_button->setEnabled(1);
   std::string balance_path_;
   balance_path_ = ros::package::getPath("alice_gui") + "/config/balance_param2_on.yaml";
   parse_balance_param_data(balance_path_);
@@ -917,6 +928,9 @@ void MainWindow::on_online_walking_module_clicked() {
 void MainWindow::on_none_clicked() {
   module_msg.data = "none";
   qnode.module_on_off.publish(module_msg);
+  ui.upper_body_module_button->setEnabled(1);
+  ui.online_walking_module->setEnabled(1);
+  ui.apply_foot_step_generator->setEnabled(1);
 }
 void MainWindow::on_default_walking_button_clicked() {
 
@@ -1182,17 +1196,20 @@ void MainWindow::on_apply_foot_step_generator_clicked()
 void MainWindow::on_base_module_real_button_clicked(){
   qnode.enable_module_msg.data = "base_module";
   qnode.enable_module_pub.publish(qnode.enable_module_msg);
+  ui.initialize_ft_sensor_button->setEnabled(1);
 }
 void MainWindow::on_initial_pose_real_button_clicked()
 {
   qnode.init_pose_msg.data = "init_pose";
   qnode.init_pose_pub.publish(qnode.init_pose_msg);
+  ui.base_module_real_button->setEnabled(1);
 }
 //initialize button
 void MainWindow::on_initialize_ft_sensor_button_clicked()
 {
   ft_init_msg.data = 1;
   qnode.alice_ft_init_pub.publish(ft_init_msg);
+  ui.none->setEnabled(1);
 }
 //<------------------------------------------------------------------- leg_module-->
 /*void MainWindow::on_alice_leg_module_button_clicked()
