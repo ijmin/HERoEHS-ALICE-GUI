@@ -168,7 +168,7 @@ void Command_generator::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 	  }
 	  else if(joy->buttons[10] == 1)
 	  {
-	    joystic_command.key = "y_typeright_kick";
+	    joystic_command.key = "y_type_right_kick";
 	    command_switch = 2;
 	  }
 	  else

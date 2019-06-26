@@ -929,6 +929,7 @@ void MainWindow::on_y_walking_button_clicked() {
   qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 //walking module button
+///////////////////////Speed Walking Mode////////////////////////////////
 void MainWindow::on_Speed_Slow_clicked()
 {
   Speed = "1";
@@ -1020,6 +1021,7 @@ void MainWindow::on_centered_right_clicked() {
   qnode.precision_command_msg.value = Speed;
   qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
+///////////////////////Precision Walking Mode////////////////////////////////
 void MainWindow::on_precision_forward_clicked() {
 
   qnode.precision_command_msg.key = "forward_precision";
@@ -1073,11 +1075,48 @@ void MainWindow::on_precision_stop_clicked() {
   qnode.precision_command_msg.value = Speed;
   qnode.precision_foot_step_command_pub.publish(qnode.precision_command_msg);
 }
-void MainWindow::on_apply_data_clicked() {
+///////////////////////Parameter Walking Mode////////////////////////////////
+void MainWindow::on_parameter_turn_left_clicked() {
+	parameter_walking_pub("turn left");
+}
+void MainWindow::on_parameter_turn_right_clicked() {
+	parameter_walking_pub("turn right");
+}
+void MainWindow::on_parameter_left_clicked() {
+	parameter_walking_pub("left");
+}
+void MainWindow::on_parameter_right_clicked() {
+	parameter_walking_pub("right");
+}
+void MainWindow::on_parameter_forward_clicked() {
+	parameter_walking_pub("forward");
+}
+void MainWindow::on_parameter_backward_clicked() {
+	parameter_walking_pub("backward");
+}
+void MainWindow::on_parameter_expanded_left_clicked() {
+	parameter_walking_pub("expanded left");
+}
+void MainWindow::on_parameter_expanded_right_clicked() {
+	parameter_walking_pub("expanded right");
+}
+void MainWindow::on_parameter_centered_left_clicked() {
+	parameter_walking_pub("centered left");
+}
+void MainWindow::on_parameter_centered_right_clicked() {
+	parameter_walking_pub("centered right");
+}
+void MainWindow::on_parameter_stop_clicked() {
+	parameter_walking_pub("stop");
+}
+/////////////////////////////////////////////////////////////////////////////
+void MainWindow::parameter_walking_pub(std::string command)
+{
 
   QString parameter_str;
   double  parameter_double = 0;
 
+  foot_step_command_msg.command = command;
 
   parameter_str = ui.edit_step_num->text();
   parameter_double = parameter_str.toDouble();
@@ -1099,35 +1138,6 @@ void MainWindow::on_apply_data_clicked() {
   parameter_double = parameter_str.toDouble();
   foot_step_command_msg.step_time = parameter_double;
 
-  // send message
-  if(setting_comboBox_index == 1)
-  {
-    foot_step_command_msg.command = "default stop";
-    default_step_num = foot_step_command_msg.step_num;
-    default_step_length = foot_step_command_msg.step_length;
-    default_side_step_length = foot_step_command_msg.side_step_length;
-    default_step_angle_radian = foot_step_command_msg.step_angle_rad;
-    default_step_time = foot_step_command_msg.step_time;
-  }
-  else if(setting_comboBox_index == 2)
-  {
-    foot_step_command_msg.command = "expanded stop";
-    expanded_step_num = foot_step_command_msg.step_num;
-    expanded_step_length = foot_step_command_msg.step_length;
-    expanded_side_step_length = foot_step_command_msg.side_step_length;
-    expanded_step_angle_radian = foot_step_command_msg.step_angle_rad;
-    expanded_step_time = foot_step_command_msg.step_time;
-  }
-  else if(setting_comboBox_index == 3)
-  {
-    foot_step_command_msg.command = "centered stop";
-    centered_step_num = foot_step_command_msg.step_num;
-    centered_step_length = foot_step_command_msg.step_length;
-    centered_side_step_length = foot_step_command_msg.side_step_length;
-    centered_step_angle_radian = foot_step_command_msg.step_angle_rad;
-    centered_step_time = foot_step_command_msg.step_time;
-  }
-  else foot_step_command_msg.command = "stop";
   qnode.foot_step_command_pub.publish(foot_step_command_msg);
 }
 // foot step generater

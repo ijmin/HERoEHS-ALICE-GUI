@@ -4538,44 +4538,158 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </widget>
-        </widget>
-        <widget class="QTabWidget" name="tabWidget_4">
-         <property name="geometry">
-          <rect>
-           <x>1260</x>
-           <y>10</y>
-           <width>541</width>
-           <height>331</height>
-          </rect>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::TabFocus</enum>
-         </property>
-         <property name="currentIndex">
-          <number>0</number>
-         </property>
-         <widget class="QWidget" name="tab_12">
+         <widget class="QWidget" name="tab_16">
           <attribute name="title">
-           <string>Step parameter setting</string>
+           <string>Parameter Walking test</string>
           </attribute>
-          <widget class="QPushButton" name="apply_data">
+          <widget class="QPushButton" name="parameter_turn_right">
            <property name="geometry">
             <rect>
-             <x>230</x>
-             <y>210</y>
-             <width>271</width>
-             <height>51</height>
+             <x>320</x>
+             <y>70</y>
+             <width>91</width>
+             <height>61</height>
             </rect>
            </property>
            <property name="text">
-            <string>Apply</string>
+            <string>TR</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="parameter_forward">
+           <property name="geometry">
+            <rect>
+             <x>220</x>
+             <y>70</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>F</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="parameter_backward">
+           <property name="geometry">
+            <rect>
+             <x>220</x>
+             <y>210</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>B</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="parameter_left">
+           <property name="geometry">
+            <rect>
+             <x>120</x>
+             <y>140</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>L</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="parameter_expanded_right">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>70</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>ER</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="parameter_turn_left">
+           <property name="geometry">
+            <rect>
+             <x>120</x>
+             <y>70</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>TL</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="parameter_stop">
+           <property name="geometry">
+            <rect>
+             <x>220</x>
+             <y>140</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>S</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="parameter_right">
+           <property name="geometry">
+            <rect>
+             <x>320</x>
+             <y>140</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>R</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="parameter_expanded_left">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>70</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>EL</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="parameter_centered_left">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>140</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>CL</string>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="parameter_centered_right">
+           <property name="geometry">
+            <rect>
+             <x>420</x>
+             <y>140</y>
+             <width>91</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="text">
+            <string>CR</string>
            </property>
           </widget>
           <widget class="QWidget" name="gridLayoutWidget_2">
            <property name="geometry">
             <rect>
-             <x>30</x>
-             <y>30</y>
+             <x>40</x>
+             <y>360</y>
              <width>191</width>
              <height>237</height>
             </rect>
@@ -4745,8 +4859,8 @@ p, li { white-space: pre-wrap; }
           <widget class="QComboBox" name="setting_comboBox">
            <property name="geometry">
             <rect>
-             <x>230</x>
-             <y>30</y>
+             <x>240</x>
+             <y>360</y>
              <width>271</width>
              <height>31</height>
             </rect>
@@ -4755,13 +4869,33 @@ p, li { white-space: pre-wrap; }
             <enum>Qt::LeftToRight</enum>
            </property>
           </widget>
+          <widget class="QLabel" name="label_20">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>310</y>
+             <width>211</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>Parameter Setting</string>
+           </property>
+          </widget>
          </widget>
         </widget>
         <widget class="QTabWidget" name="tabWidget_5">
          <property name="geometry">
           <rect>
-           <x>1260</x>
-           <y>370</y>
+           <x>1230</x>
+           <y>10</y>
            <width>541</width>
            <height>331</height>
           </rect>

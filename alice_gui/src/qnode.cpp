@@ -65,14 +65,19 @@ QNode::QNode(int argc, char** argv ) :
 
 	q_center_robot_x = 0;
 	q_center_robot_y = 0;
+	q_center_robot_z = 0;
 	q_goal1_robot_x = 0;
 	q_goal1_robot_y = 0;
+	q_goal1_robot_z = 0;
 	q_goal2_robot_x = 0;
 	q_goal2_robot_y = 0;
+	q_goal2_robot_z = 0;
 	q_fusion_robot_x = 0;
 	q_fusion_robot_y = 0;
+	q_fusion_robot_z = 0;
 	q_kinematic_robot_x = 0;
 	q_kinematic_robot_y = 0;
+	q_kinematic_robot_z = 0;
 }
 
 QNode::~QNode() {
@@ -117,7 +122,7 @@ bool QNode::init() {
 	/*****************************************************************************
 	 ** walking test
 	 *****************************************************************************/
-	foot_step_command_pub = n.advertise<alice_foot_step_generator::FootStepCommand>("/heroehs/gui/step_save",10);
+	foot_step_command_pub = n.advertise<alice_foot_step_generator::FootStepCommand>("/heroehs/alice_foot_step_generator/walking_command",10);
 	module_on_off = n.advertise<std_msgs::String>("/robotis/enable_ctrl_module", 10);
 
 	precision_foot_step_command_pub = n.advertise<diagnostic_msgs::KeyValue>("/heroehs/move_command", 10);

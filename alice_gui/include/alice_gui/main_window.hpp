@@ -154,8 +154,20 @@ public:
 	void on_precision_centered_right_clicked();
 
 	void on_precision_stop_clicked();
+
+	void on_parameter_turn_left_clicked();
+	void on_parameter_turn_right_clicked();
+	void on_parameter_left_clicked();
+	void on_parameter_right_clicked();
+	void on_parameter_forward_clicked();
+	void on_parameter_backward_clicked();
+	void on_parameter_expanded_left_clicked();
+	void on_parameter_expanded_right_clicked();
+	void on_parameter_centered_left_clicked();
+	void on_parameter_centered_right_clicked();
+	void on_parameter_stop_clicked();
 	//parameter
-	void on_apply_data_clicked();
+	void parameter_walking_pub(std::string command);
 	void on_joint_feedback_gain_on_clicked();
 	void on_joint_feedback_gain_off_clicked();
 	void on_balance_param_on_clicked();
