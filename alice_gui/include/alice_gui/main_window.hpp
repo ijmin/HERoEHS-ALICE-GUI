@@ -108,7 +108,8 @@ public:
 	void torque_state_changed_function(QString id_string, bool check);
 	void torque_state(bool state);
 
-
+	void on_Grid_Visible_Button_clicked();
+	void on_Grid_Invisible_Button_clicked();
 	//<------------------------------------------------------------------- walking test -->
 	void on_online_walking_module_clicked();
 	void on_none_clicked();
@@ -279,10 +280,12 @@ public:
 	//<------------------------------------------------------------------- graph -->
 	void check_sensor_menu();
 	void select_joint_state();
+
 	QCPItemRect* foot_left;
 	QCPItemRect* foot_right;
 	QCPItemRect* ground_map;
-	QCPItemText* robot_pose_info;
+	QCPGrid* ground_map_grid_x;
+	QCPGrid* ground_map_grid_y;
 	QCPItemText* center_direction;
 	QCPItemText* goal1_direction;
 	QCPItemText* goal2_direction;

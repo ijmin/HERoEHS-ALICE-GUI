@@ -86,19 +86,25 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   graph_draw_sensor(ui.sensor_plot_1, "Left Sensor", "m", -3, 3, 10);
   graph_draw_sensor(ui.sensor_plot_2, "Right Sensor", "m", -3, 3, 10);
   graph_draw_none_line(ui.zmp_graph, "         ZMP FZ", "m", -0.3, 0.3, -0.3, 0.3, 10);
-
-  graph_draw_map(ui.ground_graph, "         MAP", "m", -5.5, 5.5, -4, 4, 10);
+  graph_draw_map(ui.ground_graph, "         MAP", "m", -6, 6, -4, 4, 10);
   ui.ground_graph->xAxis->setLabel("X  m");
   ui.ground_graph->yAxis->setLabel("Y  m");
   ground_map = new QCPItemRect(ui.ground_graph);
   draw_ractangle(ui.ground_graph, ground_map, "ground");
   ground_map->topLeft->setCoords(-4.5,-3);
   ground_map->bottomRight->setCoords(4.5,3);
-  robot_pose_info = new QCPItemText(ui.ground_graph);
-  robot_pose_info->setText(" center : red\n goal1 : gray\n goal2 : blue\n fusion : yellow\n kinematic : magenta");
-  robot_pose_info->position->setCoords(4.7, 3.5);
-  robot_pose_info->setTextAlignment(Qt::AlignLeft);
-  robot_pose_info->setFont(QFont(font().family(), 12));
+  ground_map_grid_x = new QCPGrid(ui.ground_graph->xAxis);
+  ground_map_grid_y = new QCPGrid(ui.ground_graph->yAxis);
+  ground_map_grid_x->setPen(QPen(Qt::darkGray));
+  ground_map_grid_y->setPen(QPen(Qt::darkGray));
+  ground_map_grid_x->setSubGridPen(QPen(Qt::darkGray));
+  ground_map_grid_y->setSubGridPen(QPen(Qt::darkGray));
+  ground_map_grid_x->setZeroLinePen(QPen(Qt::darkGray));
+  ground_map_grid_y->setZeroLinePen(QPen(Qt::darkGray));
+  ground_map_grid_x->setVisible(0);
+  ground_map_grid_y->setVisible(0);
+  ground_map_grid_x->setSubGridVisible(0);
+  ground_map_grid_y->setSubGridVisible(0);
   center_direction = new QCPItemText(ui.ground_graph);
   center_direction->setText("^");
   center_direction->setFont(QFont(font().family(), 30));
@@ -260,6 +266,10 @@ void MainWindow::on_ALICE_ID_1_Button_clicked(){
   ui.foot_step_foot_z_swap->setText(QString("%1").arg(foot_step_foot_z_swap));
   ui.foot_step_body_z_swap->setText(QString("%1").arg(foot_step_body_z_swap));
   ui.foot_step_y_zmp_conv->setText(QString("%1").arg(foot_step_y_zmp_conv));
+  ui.edit_dsp->setText(QString("%1").arg(foot_step_dsp));
+  ui.edit_foot_z_swap->setText(QString("%1").arg(foot_step_foot_z_swap));
+  ui.edit_body_z_swap->setText(QString("%1").arg(foot_step_body_z_swap));
+  ui.edit_y_zmp_conv->setText(QString("%1").arg(foot_step_y_zmp_conv));
 
   ui.expanded_left->setEnabled(1);
   ui.expanded_right->setEnabled(1);
@@ -374,6 +384,11 @@ void MainWindow::on_ALICE_ID_2_Button_clicked(){
   ui.foot_step_foot_z_swap->setText(QString("%1").arg(foot_step_foot_z_swap));
   ui.foot_step_body_z_swap->setText(QString("%1").arg(foot_step_body_z_swap));
   ui.foot_step_y_zmp_conv->setText(QString("%1").arg(foot_step_y_zmp_conv));
+
+  ui.edit_dsp->setText(QString("%1").arg(foot_step_dsp));
+  ui.edit_foot_z_swap->setText(QString("%1").arg(foot_step_foot_z_swap));
+  ui.edit_body_z_swap->setText(QString("%1").arg(foot_step_body_z_swap));
+  ui.edit_y_zmp_conv->setText(QString("%1").arg(foot_step_y_zmp_conv));
 
   ui.expanded_left->setEnabled(1);
   ui.expanded_right->setEnabled(1);
@@ -696,10 +711,6 @@ void MainWindow::on_setting_comboBox_currentIndexChanged(int index)
     ui.edit_side_step_length->setText("");
     ui.edit_step_angle_rad->setText("");
     ui.edit_step_time->setText("");
-    ui.edit_dsp->setText("");
-    ui.edit_foot_z_swap->setText("");
-    ui.edit_body_z_swap->setText("");
-    ui.edit_y_zmp_conv->setText("");
     setting_comboBox_index = 0;
   }
   if(index == 1)
@@ -709,10 +720,7 @@ void MainWindow::on_setting_comboBox_currentIndexChanged(int index)
     ui.edit_side_step_length->setText(QString("%1").arg(default_side_step_length));
     ui.edit_step_angle_rad->setText(QString("%1").arg(default_step_angle_radian));
     ui.edit_step_time->setText(QString("%1").arg(default_step_time));
-    ui.edit_dsp->setText(QString("%1").arg(foot_step_dsp));
-    ui.edit_foot_z_swap->setText(QString("%1").arg(foot_step_foot_z_swap));
-    ui.edit_body_z_swap->setText(QString("%1").arg(foot_step_body_z_swap));
-    ui.edit_y_zmp_conv->setText(QString("%1").arg(foot_step_y_zmp_conv));
+
     setting_comboBox_index = 1;
   }
   if(index == 2)
@@ -722,10 +730,6 @@ void MainWindow::on_setting_comboBox_currentIndexChanged(int index)
     ui.edit_side_step_length->setText(QString("%1").arg(expanded_side_step_length));
     ui.edit_step_angle_rad->setText(QString("%1").arg(expanded_step_angle_radian));
     ui.edit_step_time->setText(QString("%1").arg(expanded_step_time));
-    ui.edit_dsp->setText(QString("%1").arg(foot_step_dsp));
-    ui.edit_foot_z_swap->setText(QString("%1").arg(foot_step_foot_z_swap));
-    ui.edit_body_z_swap->setText(QString("%1").arg(foot_step_body_z_swap));
-    ui.edit_y_zmp_conv->setText(QString("%1").arg(foot_step_y_zmp_conv));
     setting_comboBox_index = 2;
   }
   if(index == 3)
@@ -735,10 +739,6 @@ void MainWindow::on_setting_comboBox_currentIndexChanged(int index)
     ui.edit_side_step_length->setText(QString("%1").arg(centered_side_step_length));
     ui.edit_step_angle_rad->setText(QString("%1").arg(centered_step_angle_radian));
     ui.edit_step_time->setText(QString("%1").arg(centered_step_time));
-    ui.edit_dsp->setText(QString("%1").arg(foot_step_dsp));
-    ui.edit_foot_z_swap->setText(QString("%1").arg(foot_step_foot_z_swap));
-    ui.edit_body_z_swap->setText(QString("%1").arg(foot_step_body_z_swap));
-    ui.edit_y_zmp_conv->setText(QString("%1").arg(foot_step_y_zmp_conv));
     setting_comboBox_index = 3;
   }
 }
@@ -913,6 +913,22 @@ void MainWindow::change_button(QString id_string, std::string type)
     qnode.log(qnode.Error, "Check ID number <SEND FAIL>");
   }
 }
+
+void MainWindow::on_Grid_Visible_Button_clicked()
+{
+  ground_map_grid_x->setVisible(1);
+  ground_map_grid_y->setVisible(1);
+  ground_map_grid_x->setSubGridVisible(1);
+  ground_map_grid_y->setSubGridVisible(1);
+}
+void MainWindow::on_Grid_Invisible_Button_clicked()
+{
+  ground_map_grid_x->setVisible(0);
+  ground_map_grid_y->setVisible(0);
+  ground_map_grid_x->setSubGridVisible(0);
+  ground_map_grid_y->setSubGridVisible(0);
+}
+
 /*****************************************************************************
  ** walking test
  *****************************************************************************/

@@ -63,20 +63,20 @@ QNode::QNode(int argc, char** argv ) :
 	current_robot_y = 0;
 	current_robot_theta = 0;
 
-	q_center_robot_x = 0;
-	q_center_robot_y = 0;
+	q_center_robot_x = 50;
+	q_center_robot_y = 50;
 	q_center_robot_z = 0;
-	q_goal1_robot_x = 0;
-	q_goal1_robot_y = 0;
+	q_goal1_robot_x = 50;
+	q_goal1_robot_y = 50;
 	q_goal1_robot_z = 0;
-	q_goal2_robot_x = 0;
-	q_goal2_robot_y = 0;
+	q_goal2_robot_x = 50;
+	q_goal2_robot_y = 50;
 	q_goal2_robot_z = 0;
-	q_fusion_robot_x = 0;
-	q_fusion_robot_y = 0;
+	q_fusion_robot_x = 50;
+	q_fusion_robot_y = 50;
 	q_fusion_robot_z = 0;
-	q_kinematic_robot_x = 0;
-	q_kinematic_robot_y = 0;
+	q_kinematic_robot_x = 50;
+	q_kinematic_robot_y = 50;
 	q_kinematic_robot_z = 0;
 }
 
@@ -311,6 +311,16 @@ void QNode::robotPoseMsgCallback(const alice_msgs::FoundObjectArray::ConstPtr& m
 {
 	int msg_length = msg->data.size();
 	int i;
+	q_center_robot_x = 50;
+	q_center_robot_y = 50;
+	q_goal1_robot_x = 50;
+	q_goal1_robot_y = 50;
+	q_goal2_robot_x = 50;
+	q_goal2_robot_y = 50;
+	q_fusion_robot_x = 50;
+	q_fusion_robot_y = 50;
+	q_kinematic_robot_x = 50;
+	q_kinematic_robot_y = 50;
 	for ( i = 0; i < msg_length ; i++)
 	{
 		if(msg->data[i].name == "center")
