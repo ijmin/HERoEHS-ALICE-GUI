@@ -41,6 +41,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   ui.balance_duration_value->setEnabled(0);
   ui.balance_hip_value->setEnabled(0);
   ui.joint_updating_duration->setEnabled(0);
+  ui.balance_apply_button->setEnabled(0);
+  ui.joint_apply_button->setEnabled(0);
 
   ui.initial_pose_real_button->setEnabled(0);
   ui.base_module_real_button->setEnabled(0);
@@ -86,21 +88,21 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   graph_draw_sensor(ui.sensor_plot_1, "Left Sensor", "m", -3, 3, 10);
   graph_draw_sensor(ui.sensor_plot_2, "Right Sensor", "m", -3, 3, 10);
   graph_draw_none_line(ui.zmp_graph, "         ZMP FZ", "m", -0.3, 0.3, -0.3, 0.3, 10);
-  graph_draw_map(ui.ground_graph, "         MAP", "m", -6, 6, -4, 4, 10);
+  graph_draw_map(ui.ground_graph, "         MAP", "m", -5.5, 5.5, -4, 4, 10);
   ui.ground_graph->xAxis->setLabel("X  m");
   ui.ground_graph->yAxis->setLabel("Y  m");
   ground_map = new QCPItemRect(ui.ground_graph);
   draw_ractangle(ui.ground_graph, ground_map, "ground");
-  ground_map->topLeft->setCoords(-4.5,-3);
-  ground_map->bottomRight->setCoords(4.5,3);
+  ground_map->topLeft->setCoords(-5.5,-4);
+  ground_map->bottomRight->setCoords(5.5,4);
   ground_map_grid_x = new QCPGrid(ui.ground_graph->xAxis);
   ground_map_grid_y = new QCPGrid(ui.ground_graph->yAxis);
-  ground_map_grid_x->setPen(QPen(Qt::darkGray));
-  ground_map_grid_y->setPen(QPen(Qt::darkGray));
-  ground_map_grid_x->setSubGridPen(QPen(Qt::darkGray));
-  ground_map_grid_y->setSubGridPen(QPen(Qt::darkGray));
-  ground_map_grid_x->setZeroLinePen(QPen(Qt::darkGray));
-  ground_map_grid_y->setZeroLinePen(QPen(Qt::darkGray));
+  ground_map_grid_x->setPen(QPen(Qt::gray));
+  ground_map_grid_y->setPen(QPen(Qt::gray));
+  ground_map_grid_x->setSubGridPen(QPen(Qt::gray));
+  ground_map_grid_y->setSubGridPen(QPen(Qt::gray));
+  ground_map_grid_x->setZeroLinePen(QPen(Qt::gray));
+  ground_map_grid_y->setZeroLinePen(QPen(Qt::gray));
   ground_map_grid_x->setVisible(0);
   ground_map_grid_y->setVisible(0);
   ground_map_grid_x->setSubGridVisible(0);
@@ -1480,6 +1482,61 @@ void MainWindow::on_balance_param_off_clicked()
   parse_balance_param_data(balance_path_);
   qnode.set_balance_param_client.call(set_balance_param_msg);
 }
+
+void MainWindow::on_joint_feedback_gain_on_2_clicked()
+{
+  std::string joint_path_;
+  if(ui.ALICE_ID_1_Button->isChecked())
+  {
+
+    joint_path_ = ros::package::getPath("alice_gui") + "/config/joint_feedback_gain1_on.yaml";
+    parse_joint_feed_back_param_data(joint_path_);
+  }
+  if(ui.ALICE_ID_2_Button->isChecked())
+  {
+
+    joint_path_ = ros::package::getPath("alice_gui") + "/config/joint_feedback_gain2_on.yaml";
+    parse_joint_feed_back_param_data(joint_path_);
+  }
+
+  qnode.joint_feedback_gain_client.call(joint_feedback_gain_msg);
+  qnode.joint_feedback_gain_client_save.call(joint_feedback_gain_msg);
+}
+void MainWindow::on_joint_feedback_gain_off_2_clicked()
+{
+  std::string joint_path_;
+  joint_path_ = ros::package::getPath("alice_gui") + "/config/joint_feedback_gain1_off.yaml";
+  parse_joint_feed_back_param_data(joint_path_);
+
+  qnode.joint_feedback_gain_client.call(joint_feedback_gain_msg);
+}
+void MainWindow::on_balance_param_on_2_clicked()
+{
+  std::string balance_path_;
+  if(ui.ALICE_ID_1_Button->isChecked())
+  {
+    balance_path_ = ros::package::getPath("alice_gui") + "/config/balance_param1_on.yaml";
+    parse_balance_param_data(balance_path_);
+
+  }
+  if(ui.ALICE_ID_2_Button->isChecked())
+  {
+    balance_path_ = ros::package::getPath("alice_gui") + "/config/balance_param2_on.yaml";
+    parse_balance_param_data(balance_path_);
+
+  }
+
+  qnode.set_balance_param_client.call(set_balance_param_msg);
+  qnode.set_balance_param_client_save.call(set_balance_param_msg);
+}
+void MainWindow::on_balance_param_off_2_clicked()
+{
+  std::string balance_path_;
+  balance_path_ = ros::package::getPath("alice_gui") + "/config/balance_param1_off.yaml";
+  parse_balance_param_data(balance_path_);
+  qnode.set_balance_param_client.call(set_balance_param_msg);
+}
+
 void MainWindow::parse_gain_tracking_data()
 {
 

@@ -356,6 +356,20 @@ void MainWindow::draw_ractangle(QCustomPlot *ui_graph, QCPItemRect* section, con
 	ui_graph->addLayer(layer_name, ui_graph->layer("grid"), QCustomPlot::limBelow);
 	section->setLayer(layer_name);
 }
+void MainWindow::draw_linebox(QCustomPlot *ui_graph, QCPItemRect* section, const QString layer_name)
+{
+	section->topLeft->setType(QCPItemPosition::ptPlotCoords);
+	section->topLeft->setAxes(ui_graph->xAxis, ui_graph->yAxis);
+	section->bottomRight->setType(QCPItemPosition::ptPlotCoords);
+	section->bottomRight->setAxes(ui_graph->xAxis, ui_graph->yAxis);
+	section->topLeft->setCoords(0,0);
+	section->bottomRight->setCoords(0,0);
+	section->setBrush(Qt::NoBrush);
+	//section->setPen(QPen (QColor::white));
+	//setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, Qt::magenta, 35));
+	ui_graph->addLayer(layer_name, ui_graph->layer("grid"), QCustomPlot::limBelow);
+	section->setLayer(layer_name);
+}
 void MainWindow::change_ractangle(QCPItemRect* section, double valueX, double valueY)
 {
 	section->topLeft->setCoords(valueY+0.065,valueX+0.125);

@@ -77,6 +77,7 @@ public:
 	void graph_draw_sensor_update(QCustomPlot *ui_graph, double valueX, double valueY, double valueZ);
 	void graph_draw_clean(QCustomPlot *ui_graph);
 	void draw_ractangle(QCustomPlot *ui_graph, QCPItemRect* section, const QString layer_name);
+	void draw_linebox(QCustomPlot *ui_graph, QCPItemRect* section, const QString layer_name);
 	void change_ractangle(QCPItemRect* section, double valueX, double valueY);
 	void on_ALICE_ID_1_Button_clicked();
 	void on_ALICE_ID_2_Button_clicked();
@@ -173,6 +174,10 @@ public:
 	void on_joint_feedback_gain_off_clicked();
 	void on_balance_param_on_clicked();
 	void on_balance_param_off_clicked();
+	void on_joint_feedback_gain_on_2_clicked();
+	void on_joint_feedback_gain_off_2_clicked();
+	void on_balance_param_on_2_clicked();
+	void on_balance_param_off_2_clicked();
 
 	//<------------------------------------------------------------------- module on off -->
 	//<------------------------------------------------------------------- base_module-->

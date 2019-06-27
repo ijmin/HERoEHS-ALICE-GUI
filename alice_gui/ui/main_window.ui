@@ -468,7 +468,7 @@
              <widget class="QPushButton" name="balance_apply_button">
               <property name="geometry">
                <rect>
-                <x>370</x>
+                <x>10</x>
                 <y>740</y>
                 <width>101</width>
                 <height>41</height>
@@ -1596,6 +1596,32 @@ p, li { white-space: pre-wrap; }
                </item>
               </layout>
              </widget>
+             <widget class="QPushButton" name="balance_param_off_2">
+              <property name="geometry">
+               <rect>
+                <x>400</x>
+                <y>740</y>
+                <width>51</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>OFF</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="balance_param_on_2">
+              <property name="geometry">
+               <rect>
+                <x>320</x>
+                <y>740</y>
+                <width>51</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>ON</string>
+              </property>
+             </widget>
             </widget>
            </widget>
           </item>
@@ -1611,19 +1637,6 @@ p, li { white-space: pre-wrap; }
              <attribute name="title">
               <string>Joint feedback</string>
              </attribute>
-             <widget class="QPushButton" name="joint_apply_button">
-              <property name="geometry">
-               <rect>
-                <x>370</x>
-                <y>740</y>
-                <width>101</width>
-                <height>41</height>
-               </rect>
-              </property>
-              <property name="text">
-               <string>Apply</string>
-              </property>
-             </widget>
              <widget class="QPushButton" name="joint_save_button">
               <property name="geometry">
                <rect>
@@ -2096,6 +2109,19 @@ p, li { white-space: pre-wrap; }
                     </widget>
                    </item>
                   </layout>
+                 </widget>
+                 <widget class="QPushButton" name="joint_apply_button">
+                  <property name="geometry">
+                   <rect>
+                    <x>20</x>
+                    <y>190</y>
+                    <width>101</width>
+                    <height>41</height>
+                   </rect>
+                  </property>
+                  <property name="text">
+                   <string>Apply</string>
+                  </property>
                  </widget>
                 </widget>
                </item>
@@ -2597,6 +2623,32 @@ p, li { white-space: pre-wrap; }
                 <widget class="QLineEdit" name="joint_updating_duration"/>
                </item>
               </layout>
+             </widget>
+             <widget class="QPushButton" name="joint_feedback_gain_off_2">
+              <property name="geometry">
+               <rect>
+                <x>400</x>
+                <y>740</y>
+                <width>51</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>OFF</string>
+              </property>
+             </widget>
+             <widget class="QPushButton" name="joint_feedback_gain_on_2">
+              <property name="geometry">
+               <rect>
+                <x>320</x>
+                <y>740</y>
+                <width>51</width>
+                <height>41</height>
+               </rect>
+              </property>
+              <property name="text">
+               <string>ON</string>
+              </property>
              </widget>
             </widget>
            </widget>
@@ -3972,186 +4024,6 @@ p, li { white-space: pre-wrap; }
             <string>B</string>
            </property>
           </widget>
-          <widget class="QFrame" name="frame_4">
-           <property name="geometry">
-            <rect>
-             <x>20</x>
-             <y>360</y>
-             <width>241</width>
-             <height>251</height>
-            </rect>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <widget class="QLabel" name="label_13">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>10</y>
-              <width>151</width>
-              <height>17</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>16</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <property name="text">
-             <string>Balance / Joint</string>
-            </property>
-           </widget>
-           <widget class="QFrame" name="frame_5">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>40</y>
-              <width>201</width>
-              <height>80</height>
-             </rect>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <widget class="QLabel" name="label_17">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>131</width>
-               <height>17</height>
-              </rect>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::NoFrame</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <property name="text">
-              <string>Balance parameter</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="balance_param_on">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>30</y>
-               <width>51</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>ON</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="balance_param_off">
-             <property name="geometry">
-              <rect>
-               <x>110</x>
-               <y>30</y>
-               <width>51</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>OFF</string>
-             </property>
-            </widget>
-           </widget>
-           <widget class="QFrame" name="frame_6">
-            <property name="geometry">
-             <rect>
-              <x>20</x>
-              <y>140</y>
-              <width>201</width>
-              <height>80</height>
-             </rect>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <widget class="QLabel" name="label_18">
-             <property name="geometry">
-              <rect>
-               <x>0</x>
-               <y>0</y>
-               <width>131</width>
-               <height>17</height>
-              </rect>
-             </property>
-             <property name="font">
-              <font>
-               <pointsize>11</pointsize>
-               <weight>50</weight>
-               <italic>false</italic>
-               <bold>false</bold>
-              </font>
-             </property>
-             <property name="frameShape">
-              <enum>QFrame::NoFrame</enum>
-             </property>
-             <property name="frameShadow">
-              <enum>QFrame::Raised</enum>
-             </property>
-             <property name="text">
-              <string>Joint feedback</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="joint_feedback_gain_on">
-             <property name="geometry">
-              <rect>
-               <x>30</x>
-               <y>30</y>
-               <width>51</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>ON</string>
-             </property>
-            </widget>
-            <widget class="QPushButton" name="joint_feedback_gain_off">
-             <property name="geometry">
-              <rect>
-               <x>110</x>
-               <y>30</y>
-               <width>51</width>
-               <height>41</height>
-              </rect>
-             </property>
-             <property name="text">
-              <string>OFF</string>
-             </property>
-            </widget>
-           </widget>
-          </widget>
           <widget class="QPushButton" name="expanded_left">
            <property name="geometry">
             <rect>
@@ -4203,74 +4075,6 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>CR</string>
            </property>
-          </widget>
-          <widget class="QFrame" name="frame_7">
-           <property name="geometry">
-            <rect>
-             <x>280</x>
-             <y>360</y>
-             <width>241</width>
-             <height>251</height>
-            </rect>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <widget class="QLabel" name="label_19">
-            <property name="geometry">
-             <rect>
-              <x>50</x>
-              <y>0</y>
-              <width>141</width>
-              <height>31</height>
-             </rect>
-            </property>
-            <property name="font">
-             <font>
-              <pointsize>16</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
-             </font>
-            </property>
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <property name="frameShadow">
-             <enum>QFrame::Raised</enum>
-            </property>
-            <property name="text">
-             <string>Walking Type</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="default_walking_button">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>70</y>
-              <width>161</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>Default Walking</string>
-            </property>
-           </widget>
-           <widget class="QPushButton" name="y_walking_button">
-            <property name="geometry">
-             <rect>
-              <x>40</x>
-              <y>150</y>
-              <width>161</width>
-              <height>51</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>Y-Walking</string>
-            </property>
-           </widget>
           </widget>
           <widget class="QWidget" name="horizontalLayoutWidget">
            <property name="geometry">
@@ -5058,6 +4862,275 @@ p, li { white-space: pre-wrap; }
            <property name="text">
             <string>foot step generater apply</string>
            </property>
+          </widget>
+         </widget>
+        </widget>
+        <widget class="QTabWidget" name="tabWidget_9">
+         <property name="geometry">
+          <rect>
+           <x>1230</x>
+           <y>370</y>
+           <width>541</width>
+           <height>331</height>
+          </rect>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::TabFocus</enum>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="tab_18">
+          <attribute name="title">
+           <string>Balance/Joint &amp; Walking Type</string>
+          </attribute>
+          <widget class="QFrame" name="frame_7">
+           <property name="geometry">
+            <rect>
+             <x>280</x>
+             <y>20</y>
+             <width>241</width>
+             <height>251</height>
+            </rect>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <widget class="QLabel" name="label_19">
+            <property name="geometry">
+             <rect>
+              <x>50</x>
+              <y>0</y>
+              <width>141</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>16</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <property name="text">
+             <string>Walking Type</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="default_walking_button">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>70</y>
+              <width>161</width>
+              <height>51</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Default Walking</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="y_walking_button">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>150</y>
+              <width>161</width>
+              <height>51</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>Y-Walking</string>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QFrame" name="frame_4">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>20</y>
+             <width>241</width>
+             <height>251</height>
+            </rect>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <widget class="QLabel" name="label_13">
+            <property name="geometry">
+             <rect>
+              <x>40</x>
+              <y>10</y>
+              <width>151</width>
+              <height>17</height>
+             </rect>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>16</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <property name="text">
+             <string>Balance / Joint</string>
+            </property>
+           </widget>
+           <widget class="QFrame" name="frame_5">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>40</y>
+              <width>201</width>
+              <height>80</height>
+             </rect>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QLabel" name="label_17">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>131</width>
+               <height>17</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <property name="text">
+              <string>Balance parameter</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="balance_param_on">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>30</y>
+               <width>51</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>ON</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="balance_param_off">
+             <property name="geometry">
+              <rect>
+               <x>110</x>
+               <y>30</y>
+               <width>51</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>OFF</string>
+             </property>
+            </widget>
+           </widget>
+           <widget class="QFrame" name="frame_6">
+            <property name="geometry">
+             <rect>
+              <x>20</x>
+              <y>140</y>
+              <width>201</width>
+              <height>80</height>
+             </rect>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <widget class="QLabel" name="label_18">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>131</width>
+               <height>17</height>
+              </rect>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>11</pointsize>
+               <weight>50</weight>
+               <italic>false</italic>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::NoFrame</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <property name="text">
+              <string>Joint feedback</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="joint_feedback_gain_on">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>30</y>
+               <width>51</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>ON</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="joint_feedback_gain_off">
+             <property name="geometry">
+              <rect>
+               <x>110</x>
+               <y>30</y>
+               <width>51</width>
+               <height>41</height>
+              </rect>
+             </property>
+             <property name="text">
+              <string>OFF</string>
+             </property>
+            </widget>
+           </widget>
           </widget>
          </widget>
         </widget>
