@@ -15,7 +15,7 @@ foot_y_force_p_gain: 0.07000000000000001
 foot_y_force_d_gain: 0
 foot_z_force_p_gain: 0.04
 foot_z_force_d_gain: 0
-foot_roll_torque_p_gain: 0.01
+foot_roll_torque_p_gain: 0.0125
 foot_roll_torque_d_gain: 0
 foot_pitch_torque_p_gain: 0.01
 foot_pitch_torque_d_gain: 0
