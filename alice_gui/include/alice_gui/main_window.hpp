@@ -77,7 +77,8 @@ public:
 	void graph_draw_sensor_update(QCustomPlot *ui_graph, double valueX, double valueY, double valueZ);
 	void graph_draw_clean(QCustomPlot *ui_graph);
 	void draw_ractangle(QCustomPlot *ui_graph, QCPItemRect* section, const QString layer_name);
-	void draw_linebox(QCustomPlot *ui_graph, QCPItemRect* section, const QString layer_name);
+	void draw_linebox(QCustomPlot *ui_graph, QCPItemRect* section, const QString layer_name, float topLeftX, float topLeftY, float bottomRightX, float bottomRightY);
+	void draw_circle(QCustomPlot *ui_graph, QCPItemEllipse* section, const QString layer_name, float topLeftX, float topLeftY, float bottomRightX, float bottomRightY);
 	void change_ractangle(QCPItemRect* section, double valueX, double valueY);
 	void on_ALICE_ID_1_Button_clicked();
 	void on_ALICE_ID_2_Button_clicked();
@@ -289,6 +290,20 @@ public:
 	QCPItemRect* foot_left;
 	QCPItemRect* foot_right;
 	QCPItemRect* ground_map;
+	QCPItemRect* left_ground;
+	QCPItemRect* left_penalty;
+	QCPItemRect* left_goal;
+	QCPItemRect* left_point1;
+	QCPItemRect* left_point2;
+	QCPItemRect* right_ground;
+	QCPItemRect* right_penalty;
+	QCPItemRect* right_goal;
+	QCPItemRect* right_point1;
+	QCPItemRect* right_point2;
+	QCPItemEllipse* center_circle;
+	QCPItemRect* center_point1;
+	QCPItemRect* center_point2;
+
 	QCPGrid* ground_map_grid_x;
 	QCPGrid* ground_map_grid_y;
 	QCPItemText* center_direction;

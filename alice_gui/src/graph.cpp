@@ -229,8 +229,6 @@ void MainWindow::graph_draw_map(QCustomPlot *ui_graph, const QString title, cons
 	ui_graph->plotLayout()->addElement(0, 0, new QCPTextElement(ui_graph, title, QFont("sans", 12, QFont::Bold)));
 
 	ui_graph->addGraph();
-	ui_graph->graph(0)->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssCircle, Qt::white, Qt::transparent, 150));
-	ui_graph->graph(0)->setPen(QPen(QColor(255, 255, 255)));
 	ui_graph->graph(0)->setLineStyle(QCPGraph::lsNone);
 	ui_graph->graph(0)->setName("Center");
 
@@ -356,17 +354,29 @@ void MainWindow::draw_ractangle(QCustomPlot *ui_graph, QCPItemRect* section, con
 	ui_graph->addLayer(layer_name, ui_graph->layer("grid"), QCustomPlot::limBelow);
 	section->setLayer(layer_name);
 }
-void MainWindow::draw_linebox(QCustomPlot *ui_graph, QCPItemRect* section, const QString layer_name)
+void MainWindow::draw_linebox(QCustomPlot *ui_graph, QCPItemRect* section, const QString layer_name, float topLeftX, float topLeftY, float bottomRightX, float bottomRightY)
 {
 	section->topLeft->setType(QCPItemPosition::ptPlotCoords);
 	section->topLeft->setAxes(ui_graph->xAxis, ui_graph->yAxis);
 	section->bottomRight->setType(QCPItemPosition::ptPlotCoords);
 	section->bottomRight->setAxes(ui_graph->xAxis, ui_graph->yAxis);
-	section->topLeft->setCoords(0,0);
-	section->bottomRight->setCoords(0,0);
+	section->topLeft->setCoords(topLeftX,topLeftY);
+	section->bottomRight->setCoords(bottomRightX,bottomRightY);
 	section->setBrush(Qt::NoBrush);
-	//section->setPen(QPen (QColor::white));
-	//setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDisc, Qt::magenta, 35));
+	section->setPen(QPen(Qt::white, 5,Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin));
+	ui_graph->addLayer(layer_name, ui_graph->layer("grid"), QCustomPlot::limBelow);
+	section->setLayer(layer_name);
+}
+void MainWindow::draw_circle(QCustomPlot *ui_graph, QCPItemEllipse* section, const QString layer_name, float topLeftX, float topLeftY, float bottomRightX, float bottomRightY)
+{
+	section->topLeft->setType(QCPItemPosition::ptPlotCoords);
+	section->topLeft->setAxes(ui_graph->xAxis, ui_graph->yAxis);
+	section->bottomRight->setType(QCPItemPosition::ptPlotCoords);
+	section->bottomRight->setAxes(ui_graph->xAxis, ui_graph->yAxis);
+	section->topLeft->setCoords(topLeftX,topLeftY);
+	section->bottomRight->setCoords(bottomRightX,bottomRightY);
+	section->setBrush(Qt::NoBrush);
+	section->setPen(QPen(Qt::white, 5,Qt::SolidLine, Qt::SquareCap, Qt::MiterJoin));
 	ui_graph->addLayer(layer_name, ui_graph->layer("grid"), QCustomPlot::limBelow);
 	section->setLayer(layer_name);
 }

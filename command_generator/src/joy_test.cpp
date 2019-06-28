@@ -24,7 +24,6 @@ public:
   string step_type;
   void Set_FootParam(void);
   int command_switch;
-  string speed_switch;
   ofstream out;
   //Text_Input//
   float Command_Period;
@@ -51,8 +50,7 @@ Command_generator::Command_generator():
   //Default_Setting//
   Input_Text();
   command_switch = 0;
-  joystic_command.value = "2";
-  speed_switch = 2;
+  joystic_command.value = "3";
   //////////////////
   
   ROS_INFO("command_generator_start");

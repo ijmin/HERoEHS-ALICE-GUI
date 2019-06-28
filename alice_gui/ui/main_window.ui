@@ -5486,8 +5486,8 @@ p, li { white-space: pre-wrap; }
         <widget class="QCustomPlot" name="ground_graph" native="true">
          <property name="geometry">
           <rect>
-           <x>0</x>
-           <y>0</y>
+           <x>10</x>
+           <y>20</y>
            <width>1163</width>
            <height>800</height>
           </rect>
@@ -5496,7 +5496,7 @@ p, li { white-space: pre-wrap; }
         <widget class="QLabel" name="label_214">
          <property name="geometry">
           <rect>
-           <x>1170</x>
+           <x>1180</x>
            <y>10</y>
            <width>171</width>
            <height>91</height>
@@ -5534,14 +5534,14 @@ p, li { white-space: pre-wrap; }
         <widget class="QGroupBox" name="Grid_GROUP">
          <property name="geometry">
           <rect>
-           <x>1170</x>
+           <x>1180</x>
            <y>130</y>
-           <width>132</width>
+           <width>161</width>
            <height>73</height>
           </rect>
          </property>
          <property name="title">
-          <string>ALICE ID setting</string>
+          <string>Grid Enable Setting</string>
          </property>
          <widget class="QRadioButton" name="Grid_Visible_Button">
           <property name="geometry">

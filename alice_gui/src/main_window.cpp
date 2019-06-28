@@ -88,13 +88,71 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   graph_draw_sensor(ui.sensor_plot_1, "Left Sensor", "m", -3, 3, 10);
   graph_draw_sensor(ui.sensor_plot_2, "Right Sensor", "m", -3, 3, 10);
   graph_draw_none_line(ui.zmp_graph, "         ZMP FZ", "m", -0.3, 0.3, -0.3, 0.3, 10);
+  //graph_draw_map(ui.ground_graph, "         MAP", "m", -8, 8, -5.5, 5.5, 10);
   graph_draw_map(ui.ground_graph, "         MAP", "m", -5.5, 5.5, -4, 4, 10);
   ui.ground_graph->xAxis->setLabel("X  m");
   ui.ground_graph->yAxis->setLabel("Y  m");
   ground_map = new QCPItemRect(ui.ground_graph);
   draw_ractangle(ui.ground_graph, ground_map, "ground");
-  ground_map->topLeft->setCoords(-5.5,-4);
-  ground_map->bottomRight->setCoords(5.5,4);
+  //ground_map->topLeft->setCoords(-8,-5.5);
+  //ground_map->bottomRight->setCoords(8,5.5);
+  ground_map->topLeft->setCoords(-5,-3.5);
+  ground_map->bottomRight->setCoords(5,3.5);
+  /*//2019 Map
+  left_ground = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, left_ground, "left ground",-7,4.5,0,-4.5);
+  left_penalty = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, left_penalty, "left penalty",-7,2.5,-6,-2.5);
+  left_goal = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, left_goal, "left goal",-7.6,1.3,-7,-1.3);
+  left_point1 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, left_point1, "left point1",-4.925,0.05,-4.875,-0.05);
+  left_point2 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, left_point2, "left point2",-4.95,0.025,-4.85,-0.025);
+  right_ground = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, right_ground, "right ground",0,4.5,7,-4.5);
+  right_penalty = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, right_penalty, "right penalty",6,2.5,7,-2.5);
+  right_goal = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, right_goal, "right goal",7,1.3,7.6,-1.3);
+  right_point1 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, right_point1, "right point1",4.875,0.05,4.925,-0.05);
+  right_point2 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, right_point2, "right point2",4.85,0.025,4.95,-0.025);
+  center_circle = new QCPItemEllipse(ui.ground_graph);
+  draw_circle(ui.ground_graph, center_circle, "center circle",-1.5,1.5,1.5,-1.5);
+  center_point1 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, center_point1, "center point1",-0.025,0.05,0.025,-0.05);
+  center_point2 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, center_point2, "center point2",-0.05,0.025,0.05,-0.025);
+  */
+  left_ground = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, left_ground, "left ground",-4.5,3,0,-3);
+  left_penalty = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, left_penalty, "left penalty",-4.5,2.5,-3.5,-2.5);
+  left_goal = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, left_goal, "left goal",-5.1,1.3,-4.5,-1.3);
+  left_point1 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, left_point1, "left point1",-2.425,0.05,-2.375,-0.05);
+  left_point2 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, left_point2, "left point2",-2.45,0.025,-2.35,-0.025);
+  right_ground = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, right_ground, "right ground",0,3,4.5,-3);
+  right_penalty = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, right_penalty, "right penalty",4.5,2.5,3.5,-2.5);
+  right_goal = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, right_goal, "right goal",4.5,1.3,5.1,-1.3);
+  right_point1 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, right_point1, "right point1",2.375,0.05,2.425,-0.05);
+  right_point2 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, right_point2, "right point2",2.35,0.025,2.45,-0.025);
+  center_circle = new QCPItemEllipse(ui.ground_graph);
+  draw_circle(ui.ground_graph, center_circle, "center circle",-0.75,0.75,0.75,-0.75);
+  center_point1 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, center_point1, "center point1",-0.025,0.05,0.025,-0.05);
+  center_point2 = new QCPItemRect(ui.ground_graph);
+  draw_linebox(ui.ground_graph, center_point2, "center point2",-0.05,0.025,0.05,-0.025);
+
   ground_map_grid_x = new QCPGrid(ui.ground_graph->xAxis);
   ground_map_grid_y = new QCPGrid(ui.ground_graph->yAxis);
   ground_map_grid_x->setPen(QPen(Qt::gray));
@@ -103,6 +161,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   ground_map_grid_y->setSubGridPen(QPen(Qt::gray));
   ground_map_grid_x->setZeroLinePen(QPen(Qt::gray));
   ground_map_grid_y->setZeroLinePen(QPen(Qt::gray));
+  ui.ground_graph->xAxis->setVisible(0);
+  ui.ground_graph->yAxis->setVisible(0);
   ground_map_grid_x->setVisible(0);
   ground_map_grid_y->setVisible(0);
   ground_map_grid_x->setSubGridVisible(0);
@@ -918,6 +978,8 @@ void MainWindow::change_button(QString id_string, std::string type)
 
 void MainWindow::on_Grid_Visible_Button_clicked()
 {
+  ui.ground_graph->xAxis->setVisible(1);
+  ui.ground_graph->yAxis->setVisible(1);
   ground_map_grid_x->setVisible(1);
   ground_map_grid_y->setVisible(1);
   ground_map_grid_x->setSubGridVisible(1);
@@ -925,6 +987,8 @@ void MainWindow::on_Grid_Visible_Button_clicked()
 }
 void MainWindow::on_Grid_Invisible_Button_clicked()
 {
+  ui.ground_graph->xAxis->setVisible(0);
+  ui.ground_graph->yAxis->setVisible(0);
   ground_map_grid_x->setVisible(0);
   ground_map_grid_y->setVisible(0);
   ground_map_grid_x->setSubGridVisible(0);
