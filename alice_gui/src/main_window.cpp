@@ -58,6 +58,10 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   alice_scene.addPixmap(pix);
   ui.alice_graphicsView->setScene(&alice_scene);
   ui.alice_graphicsView->show();
+  QPixmap pix1(":/images/Alice1.png");
+  alice_scene1.addPixmap(pix1);
+  ui.alice_graphicsView_2->setScene(&alice_scene1);
+  ui.alice_graphicsView_2->show();
   QPixmap pix2(":/images/Alice_leg.png");
   alice_leg_scene.addPixmap(pix2);
   ui.alice_leg_graphicsView->setScene(&alice_leg_scene);

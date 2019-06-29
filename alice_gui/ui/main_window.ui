@@ -5590,7 +5590,17 @@ p, li { white-space: pre-wrap; }
         <widget class="QGraphicsView" name="alice_graphicsView">
          <property name="geometry">
           <rect>
-           <x>500</x>
+           <x>60</x>
+           <y>10</y>
+           <width>811</width>
+           <height>811</height>
+          </rect>
+         </property>
+        </widget>
+        <widget class="QGraphicsView" name="alice_graphicsView_2">
+         <property name="geometry">
+          <rect>
+           <x>950</x>
            <y>10</y>
            <width>811</width>
            <height>811</height>

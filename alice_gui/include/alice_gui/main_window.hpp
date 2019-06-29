@@ -227,6 +227,7 @@ public:
 	QFont legendFont;
 	double key;
 	QGraphicsScene alice_scene;
+	QGraphicsScene alice_scene1;
 	QGraphicsScene alice_leg_scene;
 
 
