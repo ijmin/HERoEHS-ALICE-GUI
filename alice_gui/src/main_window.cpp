@@ -92,17 +92,17 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   graph_draw_sensor(ui.sensor_plot_1, "Left Sensor", "m", -3, 3, 10);
   graph_draw_sensor(ui.sensor_plot_2, "Right Sensor", "m", -3, 3, 10);
   graph_draw_none_line(ui.zmp_graph, "         ZMP FZ", "m", -0.3, 0.3, -0.3, 0.3, 10);
-  //graph_draw_map(ui.ground_graph, "         MAP", "m", -8, 8, -5.5, 5.5, 10);
-  graph_draw_map(ui.ground_graph, "         MAP", "m", -5.5, 5.5, -4, 4, 10);
+  graph_draw_map(ui.ground_graph, "         MAP", "m", -8, 8, -5.5, 5.5, 10);
+  //graph_draw_map(ui.ground_graph, "         MAP", "m", -5.5, 5.5, -4, 4, 10);
   ui.ground_graph->xAxis->setLabel("X  m");
   ui.ground_graph->yAxis->setLabel("Y  m");
   ground_map = new QCPItemRect(ui.ground_graph);
   draw_ractangle(ui.ground_graph, ground_map, "ground");
-  //ground_map->topLeft->setCoords(-8,-5.5);
-  //ground_map->bottomRight->setCoords(8,5.5);
-  ground_map->topLeft->setCoords(-5,-3.5);
-  ground_map->bottomRight->setCoords(5,3.5);
-  /*//2019 Map
+  ground_map->topLeft->setCoords(-8,-5.5);
+  ground_map->bottomRight->setCoords(8,5.5);
+  //ground_map->topLeft->setCoords(-5,-3.5);
+  //ground_map->bottomRight->setCoords(5,3.5);
+  //2019 Map
   left_ground = new QCPItemRect(ui.ground_graph);
   draw_linebox(ui.ground_graph, left_ground, "left ground",-7,4.5,0,-4.5);
   left_penalty = new QCPItemRect(ui.ground_graph);
@@ -129,7 +129,8 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   draw_linebox(ui.ground_graph, center_point1, "center point1",-0.025,0.05,0.025,-0.05);
   center_point2 = new QCPItemRect(ui.ground_graph);
   draw_linebox(ui.ground_graph, center_point2, "center point2",-0.05,0.025,0.05,-0.025);
-  */
+
+  /*//2018 Map
   left_ground = new QCPItemRect(ui.ground_graph);
   draw_linebox(ui.ground_graph, left_ground, "left ground",-4.5,3,0,-3);
   left_penalty = new QCPItemRect(ui.ground_graph);
@@ -156,7 +157,7 @@ MainWindow::MainWindow(int argc, char** argv, QWidget *parent)
   draw_linebox(ui.ground_graph, center_point1, "center point1",-0.025,0.05,0.025,-0.05);
   center_point2 = new QCPItemRect(ui.ground_graph);
   draw_linebox(ui.ground_graph, center_point2, "center point2",-0.05,0.025,0.05,-0.025);
-
+  */
   ground_map_grid_x = new QCPGrid(ui.ground_graph->xAxis);
   ground_map_grid_y = new QCPGrid(ui.ground_graph->yAxis);
   ground_map_grid_x->setPen(QPen(Qt::gray));

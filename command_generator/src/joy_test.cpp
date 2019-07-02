@@ -56,7 +56,7 @@ Command_generator::Command_generator():
   ROS_INFO("command_generator_start");
   nh_.param("axis_linear", linear_, linear_);
   nh_.param("axis_angular", angular_, angular_);
-  vel_pub_ = nh_.advertise<diagnostic_msgs::KeyValue>("/heroehs/move_command", 10);
+  vel_pub_ = nh_.advertise<diagnostic_msgs::KeyValue>("/heroehs/alice/move_command", 10);
 
   joy_sub_ = nh_.subscribe<sensor_msgs::Joy>("joy", 10, &Command_generator::joyCallback, this);
   alice_id_sub_ = nh_.subscribe<std_msgs::String>("/heroehs/alice_id", 10, &Command_generator::alice_id_Callback, this);
