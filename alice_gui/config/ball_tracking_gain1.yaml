@@ -1,8 +1,8 @@
-updating_duration: 3
+updating_duration: 2
 
-x_p_gain: 0.00017
+x_p_gain: 0.0025
 x_d_gain: 0.00000
 
-y_p_gain: 0.00017
+y_p_gain: 0.003
 y_d_gain: 0.00000
 
