@@ -16,4 +16,4 @@ centered_step_time: 0.85
 foot_step_dsp: 0.15
 foot_step_foot_z_swap: 0.06
 foot_step_body_z_swap: 0.01
-foot_step_y_zmp_conv: -0.02
+foot_step_y_zmp_conv: -0.04
